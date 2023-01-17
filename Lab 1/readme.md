@@ -24,4 +24,9 @@ To display in a line: 'set linesize 500`
 
 SELECT * FROM student;
 
+To save all the code in the drive, run:
 
+`spool "A:\4th Sem Labs\DBMS-Lab\Lab 1\Saved\lab1output.txt";`
+
+To end saving the code, run:
+`spool off;`
