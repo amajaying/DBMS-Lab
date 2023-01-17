@@ -20,7 +20,7 @@ INSERT INTO student VALUES(21053264,'Ajay', 'Khatri', 'CSE', '15/JAN/2003', 'M',
 
 # Step 5: Displaying Table
 
-`to display in a line: set linesize 500`
+To display in a line: 'set linesize 500`
 
 SELECT * FROM student;
 
