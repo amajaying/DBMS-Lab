@@ -18,4 +18,5 @@ grant all privileges to c21053264;
 # Step 4:
 
 > connect c21053264;
+<br>
 > kiit
