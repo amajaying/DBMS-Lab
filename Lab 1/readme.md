@@ -26,7 +26,8 @@ SELECT * FROM student;
 
 To save all the code in the drive, run:
 
-`spool "A:\4th Sem Labs\DBMS-Lab\Lab 1\Saved\lab1output.txt";`
+`spool "A:\4th Sem Labs\DBMS-Lab\OUTPUTS\lab1_output.txt";`
 
 To end saving the code, run:
+
 `spool off;`

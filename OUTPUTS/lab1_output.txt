@@ -1,0 +1,20 @@
+SQL> desc student
+ Name                                                  Null?    Type
+ ----------------------------------------------------- -------- ------------------------------------
+ STUDENT_ID                                                     NUMBER(38)
+ FIRST_NAME                                                     VARCHAR2(20)
+ LAST_NAME                                                      VARCHAR2(20)
+ DEPT                                                           VARCHAR2(10)
+ DATE_OF_BIRTH                                                  DATE
+ GENDER                                                         CHAR(1)
+ RELIGION                                                       VARCHAR2(10)
+
+SQL> SELECT * from student;
+
+STUDENT_ID FIRST_NAME           LAST_NAME            DEPT       DATE_OF_B G RELIGION                
+---------- -------------------- -------------------- ---------- --------- - ----------              
+  21053264 Ajay                 Khatri               CSE        15-JAN-03 M Hindu                   
+  21053258 Aayush               Sihna                CSE        15-JAN-02 M Muslim                  
+  21053434 Aadhya               Mathur               CSCE       15-DEC-02 F Hindu                   
+
+SQL> spool off;
