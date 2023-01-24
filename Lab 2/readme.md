@@ -11,3 +11,531 @@ SELECT dno, dname, location FROM dept;
 
 
 # use `commit;` to save the data in sql
+
+
+
+
+# Below are the commands used 
+
+
+SQL> CREATE TABLE emp(empno NUMBER, ename VARCHAR(20), job NUMBER);
+
+Table created.
+
+SQL> ALTER TABLE emp ADD(mgr VARCHAR(20), hiredate DATE, salary NUMBER);
+
+Table altered.
+
+SQL> SELECT * from TAB;
+
+TNAME                          TABTYPE  CLUSTERID                               
+------------------------------ ------- ----------                               
+EMP                            TABLE                                            
+EMPLOYEE                       TABLE                                            
+SALARY                         TABLE                                            
+STUDENT                        TABLE                                            
+
+SQL> ALTER TABLE emp MODIFY ename VARCHAR(40);
+
+Table altered.
+
+SQL> ALTER TABLE emp MODIFY job VARCHAR(20);
+
+Table altered.
+
+SQL> ALTER TABLE emp ADD(bdate DATE);
+
+Table altered.
+
+SQL> ALTER TABLE emp ADD(commission NUMBER(20));
+
+Table altered.
+
+SQL> select * from emp
+  2  ;
+
+no rows selected
+
+SQL> desc emp
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ EMPNO                                              NUMBER
+ ENAME                                              VARCHAR2(40)
+ JOB                                                VARCHAR2(20)
+ MGR                                                VARCHAR2(20)
+ HIREDATE                                           DATE
+ SALARY                                             NUMBER
+ BDATE                                              DATE
+ COMMISSION                                         NUMBER(20)
+
+SQL> ALTER TABLE emp DROP bdate;
+ALTER TABLE emp DROP bdate
+                     *
+ERROR at line 1:
+ORA-00905: missing keyword 
+
+
+SQL> ALTER TABLE emp DROP COLUMN bdate;
+
+Table altered.
+
+SQL> ALTER TABLE emp ADD(deptnum NUMBER);
+
+Table altered.
+
+SQL> ALTER TABLE emp RENAME COLUMN deptnum to deptno;
+
+Table altered.
+
+SQL> CREATE TABLE dept(dname VARCHAR(20), dno NUMBER, location VARCHAR(40));
+
+Table created.
+
+SQL> CREATE TABLE faculty(fname VARCHAR(10), desg VARCHAR(10), dept VARCHAR(10));
+
+Table created.
+
+SQL> DROP TABLE faculty;
+
+Table dropped.
+
+SQL> INSERT INTO emp VALUES(7369,'SMITH','CLERK','7902','17/DEC/80',800,,20);
+INSERT INTO emp VALUES(7369,'SMITH','CLERK','7902','17/DEC/80',800,,20)
+                                                                   *
+ERROR at line 1:
+ORA-00936: missing expression 
+
+
+SQL> INSERT INTO emp VALUES(7369,'SMITH','CLERK','7902','17/DEC/80',800,null,20);
+
+1 row created.
+
+SQL> SELECT * FROM emp
+  2  ;
+
+     EMPNO ENAME                                    JOB                         
+---------- ---------------------------------------- --------------------        
+MGR                  HIREDATE      SALARY COMMISSION     DEPTNO                 
+-------------------- --------- ---------- ---------- ----------                 
+      7369 SMITH                                    CLERK                       
+7902                 17-DEC-80        800                    20                 
+                                                                                
+
+SQL> set linesize 500;
+SQL> SELECT * FROM emp;
+
+     EMPNO ENAME                                    JOB                  MGR                  HIREDATE      SALARY COMMISSION     DEPTNO                                                                                                                                                                                                                                                                                                                                                                            
+---------- ---------------------------------------- -------------------- -------------------- --------- ---------- ---------- ----------                                                                                                                                                                                                                                                                                                                                                                            
+      7369 SMITH                                    CLERK                7902                 17-DEC-80        800                    20                                                                                                                                                                                                                                                                                                                                                                            
+
+SQL> set linesize 400;
+SQL> 
+SQL> SELECT * FROM emp;
+
+     EMPNO ENAME                                    JOB                  MGR                  HIREDATE      SALARY COMMISSION     DEPTNO                                                                                                                                                                                                                                                                        
+---------- ---------------------------------------- -------------------- -------------------- --------- ---------- ---------- ----------                                                                                                                                                                                                                                                                        
+      7369 SMITH                                    CLERK                7902                 17-DEC-80        800                    20                                                                                                                                                                                                                                                                        
+
+SQL> INSERT INTO emp VALUES(7499,'ALLWN','SALESMAN','7698','20/FEB/81',1600,300,30);
+
+1 row created.
+
+SQL> INSERT INTO emp VALUES(7521,'WARD','SALESMAN','7698','22/FEB/81',1250,500,30);
+
+1 row created.
+
+SQL> INSERT INTO emp VALUES((7521,'WARD','SALESMAN','7698','22/FEB/81',1250,500,30),(7521,'WARD','SALESMAN','7698','22/FEB/81',1250,500,30));
+INSERT INTO emp VALUES((7521,'WARD','SALESMAN','7698','22/FEB/81',1250,500,30),(7521,'WARD','SALESMAN','7698','22/FEB/81',1250,500,30))
+                            *
+ERROR at line 1:
+ORA-00907: missing right parenthesis 
+
+
+SQL> INSERT INTO emp VALUES(7566,'JONES','MANAGER','7839','02/APR/81',2975,NULL,20);
+
+1 row created.
+
+SQL> desc emp
+ Name                                                                                                                                                                                                                                      Null?    Type
+ ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -------- ------------------------------------------------------------------------------------------------------------------------------------------------------------
+ EMPNO                                                                                                                                                                                                                                              NUMBER
+ ENAME                                                                                                                                                                                                                                              VARCHAR2(40)
+ JOB                                                                                                                                                                                                                                                VARCHAR2(20)
+ MGR                                                                                                                                                                                                                                                VARCHAR2(20)
+ HIREDATE                                                                                                                                                                                                                                           DATE
+ SALARY                                                                                                                                                                                                                                             NUMBER
+ COMMISSION                                                                                                                                                                                                                                         NUMBER(20)
+ DEPTNO                                                                                                                                                                                                                                             NUMBER
+
+SQL> set linesize 200;
+SQL> desc emp
+ Name                                                                                                              Null?    Type
+ ----------------------------------------------------------------------------------------------------------------- -------- ----------------------------------------------------------------------------
+ EMPNO                                                                                                                      NUMBER
+ ENAME                                                                                                                      VARCHAR2(40)
+ JOB                                                                                                                        VARCHAR2(20)
+ MGR                                                                                                                        VARCHAR2(20)
+ HIREDATE                                                                                                                   DATE
+ SALARY                                                                                                                     NUMBER
+ COMMISSION                                                                                                                 NUMBER(20)
+ DEPTNO                                                                                                                     NUMBER
+
+SQL> set linesize 700;
+SQL> desc emp
+ Name                                                                                                                                                                                                                                                                                                                                                                                                                          Null?    Type
+ ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -------- ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ EMPNO                                                                                                                                                                                                                                                                                                                                                                                                                                  NUMBER
+ ENAME                                                                                                                                                                                                                                                                                                                                                                                                                                  VARCHAR2(40)
+ JOB                                                                                                                                                                                                                                                                                                                                                                                                                                    VARCHAR2(20)
+ MGR                                                                                                                                                                                                                                                                                                                                                                                                                                    VARCHAR2(20)
+ HIREDATE                                                                                                                                                                                                                                                                                                                                                                                                                               DATE
+ SALARY                                                                                                                                                                                                                                                                                                                                                                                                                                 NUMBER
+ COMMISSION                                                                                                                                                                                                                                                                                                                                                                                                                             NUMBER(20)
+ DEPTNO                                                                                                                                                                                                                                                                                                                                                                                                                                 NUMBER
+
+SQL> INSERT INTO emp VALUES(&empno,'&ename','&job','&mgr','&hiredate',&salary,&commission, &deptno);
+Enter value for empno: 7654
+Enter value for ename: MARTIN
+Enter value for job: SALESMAN
+Enter value for mgr: 7698
+Enter value for hiredate: 28-SEP-81
+Enter value for salary: 1250
+Enter value for commission: 1400
+Enter value for deptno: 30
+old   1: INSERT INTO emp VALUES(&empno,'&ename','&job','&mgr','&hiredate',&salary,&commission, &deptno)
+new   1: INSERT INTO emp VALUES(7654,'MARTIN','SALESMAN','7698','28-SEP-81',1250,1400, 30)
+
+1 row created.
+
+SQL> /
+Enter value for empno: 7698
+Enter value for ename: BLAKE
+Enter value for job: MANAGER
+Enter value for mgr: 7839
+Enter value for hiredate: 01-MAY-81
+Enter value for salary: 2850
+Enter value for commission: NULL
+Enter value for deptno: 
+old   1: INSERT INTO emp VALUES(&empno,'&ename','&job','&mgr','&hiredate',&salary,&commission, &deptno)
+new   1: INSERT INTO emp VALUES(7698,'BLAKE','MANAGER','7839','01-MAY-81',2850,NULL, )
+INSERT INTO emp VALUES(7698,'BLAKE','MANAGER','7839','01-MAY-81',2850,NULL, )
+                                                                            *
+ERROR at line 1:
+ORA-00936: missing expression 
+
+
+SQL> /
+Enter value for empno: 7698
+Enter value for ename: BLAKE
+Enter value for job: MANAGER
+Enter value for mgr: 7839
+Enter value for hiredate: 01-MAY-81
+Enter value for salary: 2850
+Enter value for commission: null
+Enter value for deptno: 30
+old   1: INSERT INTO emp VALUES(&empno,'&ename','&job','&mgr','&hiredate',&salary,&commission, &deptno)
+new   1: INSERT INTO emp VALUES(7698,'BLAKE','MANAGER','7839','01-MAY-81',2850,null, 30)
+
+1 row created.
+
+SQL> /
+Enter value for empno: 7782
+Enter value for ename: CLARK
+Enter value for job: MANAGER
+Enter value for mgr: 7839
+Enter value for hiredate: 09-JUN-81
+Enter value for salary: 2450
+Enter value for commission: null
+Enter value for deptno: 10
+old   1: INSERT INTO emp VALUES(&empno,'&ename','&job','&mgr','&hiredate',&salary,&commission, &deptno)
+new   1: INSERT INTO emp VALUES(7782,'CLARK','MANAGER','7839','09-JUN-81',2450,null, 10)
+
+1 row created.
+
+SQL> /
+Enter value for empno: 7788
+Enter value for ename: SCOTT
+Enter value for job: ANALYST
+Enter value for mgr: 7566
+Enter value for hiredate: 09-NOV-81
+Enter value for salary: 3000
+Enter value for commission: null
+Enter value for deptno: 20
+old   1: INSERT INTO emp VALUES(&empno,'&ename','&job','&mgr','&hiredate',&salary,&commission, &deptno)
+new   1: INSERT INTO emp VALUES(7788,'SCOTT','ANALYST','7566','09-NOV-81',3000,null, 20)
+
+1 row created.
+
+SQL> /
+Enter value for empno: 7839
+Enter value for ename: KING
+Enter value for job: PRESIDENT
+Enter value for mgr: 
+Enter value for hiredate: 17-NOV-81
+Enter value for salary: 
+Enter value for commission: 5000
+Enter value for deptno: null
+old   1: INSERT INTO emp VALUES(&empno,'&ename','&job','&mgr','&hiredate',&salary,&commission, &deptno)
+new   1: INSERT INTO emp VALUES(7839,'KING','PRESIDENT','','17-NOV-81',,5000, null)
+INSERT INTO emp VALUES(7839,'KING','PRESIDENT','','17-NOV-81',,5000, null)
+                                                              *
+ERROR at line 1:
+ORA-00936: missing expression 
+
+
+SQL> select * from emp;
+
+     EMPNO ENAME                                    JOB                  MGR                  HIREDATE      SALARY COMMISSION     DEPTNO                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
+---------- ---------------------------------------- -------------------- -------------------- --------- ---------- ---------- ----------                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
+      7369 SMITH                                    CLERK                7902                 17-DEC-80        800                    20                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
+      7499 ALLWN                                    SALESMAN             7698                 20-FEB-81       1600        300         30                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
+      7521 WARD                                     SALESMAN             7698                 22-FEB-81       1250        500         30                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
+      7566 JONES                                    MANAGER              7839                 02-APR-81       2975                    20                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
+      7654 MARTIN                                   SALESMAN             7698                 28-SEP-81       1250       1400         30                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
+      7698 BLAKE                                    MANAGER              7839                 01-MAY-81       2850                    30                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
+      7782 CLARK                                    MANAGER              7839                 09-JUN-81       2450                    10                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
+      7788 SCOTT                                    ANALYST              7566                 09-NOV-81       3000                    20                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
+
+8 rows selected.
+
+SQL> /
+
+     EMPNO ENAME                                    JOB                  MGR                  HIREDATE      SALARY COMMISSION     DEPTNO                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
+---------- ---------------------------------------- -------------------- -------------------- --------- ---------- ---------- ----------                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
+      7369 SMITH                                    CLERK                7902                 17-DEC-80        800                    20                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
+      7499 ALLWN                                    SALESMAN             7698                 20-FEB-81       1600        300         30                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
+      7521 WARD                                     SALESMAN             7698                 22-FEB-81       1250        500         30                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
+      7566 JONES                                    MANAGER              7839                 02-APR-81       2975                    20                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
+      7654 MARTIN                                   SALESMAN             7698                 28-SEP-81       1250       1400         30                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
+      7698 BLAKE                                    MANAGER              7839                 01-MAY-81       2850                    30                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
+      7782 CLARK                                    MANAGER              7839                 09-JUN-81       2450                    10                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
+      7788 SCOTT                                    ANALYST              7566                 09-NOV-81       3000                    20                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
+
+8 rows selected.
+
+
+SQL> INSERT INTO emp VALUES(&empno,'&ename','&job','&mgr','&hiredate',&salary,&commission, &deptno);
+Enter value for empno: 7839
+Enter value for ename: KING
+Enter value for job: PRESIDENT
+Enter value for mgr: 
+Enter value for hiredate: 17-NOV-81
+Enter value for salary: 5000
+Enter value for commission: null
+Enter value for deptno: 10
+old   1: INSERT INTO emp VALUES(&empno,'&ename','&job','&mgr','&hiredate',&salary,&commission, &deptno)
+new   1: INSERT INTO emp VALUES(7839,'KING','PRESIDENT','','17-NOV-81',5000,null, 10)
+
+1 row created.
+
+SQL> /
+Enter value for empno: 7844
+Enter value for ename: TURNER
+Enter value for job: SALESMAN
+Enter value for mgr: 7698
+Enter value for hiredate: 08-SEP-81
+Enter value for salary: 1500
+Enter value for commission: 0
+Enter value for deptno: 30
+old   1: INSERT INTO emp VALUES(&empno,'&ename','&job','&mgr','&hiredate',&salary,&commission, &deptno)
+new   1: INSERT INTO emp VALUES(7844,'TURNER','SALESMAN','7698','08-SEP-81',1500,0, 30)
+
+1 row created.
+
+SQL> /
+Enter value for empno: 7876
+Enter value for ename: ADAMS
+Enter value for job: CLERK
+Enter value for mgr: 7788
+Enter value for hiredate: 23-SEP-81
+Enter value for salary: 1100
+Enter value for commission: null
+Enter value for deptno: 20
+old   1: INSERT INTO emp VALUES(&empno,'&ename','&job','&mgr','&hiredate',&salary,&commission, &deptno)
+new   1: INSERT INTO emp VALUES(7876,'ADAMS','CLERK','7788','23-SEP-81',1100,null, 20)
+
+1 row created.
+
+SQL> /
+Enter value for empno: 7900
+Enter value for ename: JAMES
+Enter value for job: CLERK
+Enter value for mgr: 7698
+Enter value for hiredate: 03-DEC-81
+Enter value for salary: 950
+Enter value for commission: null
+Enter value for deptno: 30
+old   1: INSERT INTO emp VALUES(&empno,'&ename','&job','&mgr','&hiredate',&salary,&commission, &deptno)
+new   1: INSERT INTO emp VALUES(7900,'JAMES','CLERK','7698','03-DEC-81',950,null, 30)
+
+1 row created.
+
+SQL> /
+Enter value for empno: 7902
+Enter value for ename: FORD
+Enter value for job: ANALYST
+Enter value for mgr: 7566
+Enter value for hiredate: 03-DEC-81
+Enter value for salary: 3000
+Enter value for commission: null
+Enter value for deptno: 20
+old   1: INSERT INTO emp VALUES(&empno,'&ename','&job','&mgr','&hiredate',&salary,&commission, &deptno)
+new   1: INSERT INTO emp VALUES(7902,'FORD','ANALYST','7566','03-DEC-81',3000,null, 20)
+
+1 row created.
+
+SQL> /
+Enter value for empno: 7934
+Enter value for ename: MILLER
+Enter value for job: CLERK
+Enter value for mgr: 7782
+Enter value for hiredate: 23-JAN-82
+Enter value for salary: 1300
+Enter value for commission: null
+Enter value for deptno: 10
+old   1: INSERT INTO emp VALUES(&empno,'&ename','&job','&mgr','&hiredate',&salary,&commission, &deptno)
+new   1: INSERT INTO emp VALUES(7934,'MILLER','CLERK','7782','23-JAN-82',1300,null, 10)
+
+1 row created.
+
+SQL> SELECT * FROM emp;
+
+     EMPNO ENAME                                    JOB                         
+---------- ---------------------------------------- --------------------        
+MGR                  HIREDATE      SALARY COMMISSION     DEPTNO                 
+-------------------- --------- ---------- ---------- ----------                 
+      7369 SMITH                                    CLERK                       
+7902                 17-DEC-80        800                    20                 
+                                                                                
+      7499 ALLWN                                    SALESMAN                    
+7698                 20-FEB-81       1600        300         30                 
+                                                                                
+      7521 WARD                                     SALESMAN                    
+7698                 22-FEB-81       1250        500         30                 
+                                                                                
+
+     EMPNO ENAME                                    JOB                         
+---------- ---------------------------------------- --------------------        
+MGR                  HIREDATE      SALARY COMMISSION     DEPTNO                 
+-------------------- --------- ---------- ---------- ----------                 
+      7566 JONES                                    MANAGER                     
+7839                 02-APR-81       2975                    20                 
+                                                                                
+      7654 MARTIN                                   SALESMAN                    
+7698                 28-SEP-81       1250       1400         30                 
+                                                                                
+      7698 BLAKE                                    MANAGER                     
+7839                 01-MAY-81       2850                    30                 
+                                                                                
+
+     EMPNO ENAME                                    JOB                         
+---------- ---------------------------------------- --------------------        
+MGR                  HIREDATE      SALARY COMMISSION     DEPTNO                 
+-------------------- --------- ---------- ---------- ----------                 
+      7782 CLARK                                    MANAGER                     
+7839                 09-JUN-81       2450                    10                 
+                                                                                
+      7788 SCOTT                                    ANALYST                     
+7566                 09-NOV-81       3000                    20                 
+                                                                                
+      7839 KING                                     PRESIDENT                   
+                     17-NOV-81       5000                    10                 
+                                                                                
+
+     EMPNO ENAME                                    JOB                         
+---------- ---------------------------------------- --------------------        
+MGR                  HIREDATE      SALARY COMMISSION     DEPTNO                 
+-------------------- --------- ---------- ---------- ----------                 
+      7844 TURNER                                   SALESMAN                    
+7698                 08-SEP-81       1500          0         30                 
+                                                                                
+      7876 ADAMS                                    CLERK                       
+7788                 23-SEP-81       1100                    20                 
+                                                                                
+      7900 JAMES                                    CLERK                       
+7698                 03-DEC-81        950                    30                 
+                                                                                
+
+     EMPNO ENAME                                    JOB                         
+---------- ---------------------------------------- --------------------        
+MGR                  HIREDATE      SALARY COMMISSION     DEPTNO                 
+-------------------- --------- ---------- ---------- ----------                 
+      7902 FORD                                     ANALYST                     
+7566                 03-DEC-81       3000                    20                 
+                                                                                
+      7934 MILLER                                   CLERK                       
+7782                 23-JAN-82       1300                    10                 
+                                                                                
+
+14 rows selected.
+
+SQL> desc dept;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ DNAME                                              VARCHAR2(20)
+ DNO                                                NUMBER
+ LOCATION                                           VARCHAR2(40)
+
+SQL> INSERT INTO dept VALUES('&dname', &dno, '&location');
+Enter value for dname: ACCOUNTING
+Enter value for dno: 10
+Enter value for location: NEW YORK
+old   1: INSERT INTO dept VALUES('&dname', &dno, '&location')
+new   1: INSERT INTO dept VALUES('ACCOUNTING', 10, 'NEW YORK')
+
+1 row created.
+
+SQL> 
+SQL> /
+Enter value for dname: RESEARCH
+Enter value for dno: 20
+Enter value for location: DALLAS
+old   1: INSERT INTO dept VALUES('&dname', &dno, '&location')
+new   1: INSERT INTO dept VALUES('RESEARCH', 20, 'DALLAS')
+
+1 row created.
+
+SQL> /
+Enter value for dname: SALES
+Enter value for dno: 30
+Enter value for location: CHICAGO
+old   1: INSERT INTO dept VALUES('&dname', &dno, '&location')
+new   1: INSERT INTO dept VALUES('SALES', 30, 'CHICAGO')
+
+1 row created.
+
+SQL> /
+Enter value for dname: OPERATIONS
+Enter value for dno: 40
+Enter value for location: BOSTON
+old   1: INSERT INTO dept VALUES('&dname', &dno, '&location')
+new   1: INSERT INTO dept VALUES('OPERATIONS', 40, 'BOSTON')
+
+1 row created.
+
+SQL> set linesize 500;
+SQL> SELECT * FROM dept;
+
+DNAME                       DNO LOCATION                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
+-------------------- ---------- ----------------------------------------                                                                                                                                                                                                                                                                                                                                                                                                                                            
+ACCOUNTING                   10 NEW YORK                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
+RESEARCH                     20 DALLAS                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
+SALES                        30 CHICAGO                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
+OPERATIONS                   40 BOSTON                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
+
+SQL> SELECT dno, dname, location FROM dept;
+
+       DNO DNAME                LOCATION                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
+---------- -------------------- ----------------------------------------                                                                                                                                                                                                                                                                                                                                                                                                                                            
+        10 ACCOUNTING           NEW YORK                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
+        20 RESEARCH             DALLAS                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
+        30 SALES                CHICAGO                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
+        40 OPERATIONS           BOSTON                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
+
+SQL> commit
+  2  ;
+
+Commit complete.
+
+SQL> spool off;
+
