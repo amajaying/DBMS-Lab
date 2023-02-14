@@ -1,0 +1,126 @@
+SQL> SELECT * FROM employ
+  2  ;
+
+    EMP_ID F_NAME               L_NAME               JOB_TYPE                   
+---------- -------------------- -------------------- --------------------       
+    SALARY COMMISSION DEPT                 MANAGER_ID DOJ                       
+---------- ---------- -------------------- ---------- ---------                 
+         1 arun                                      manager                    
+     90000            production                      04-JAN-98                 
+                                                                                
+         2 barun                kumar                manager                    
+     80000            marketing                       09-FEB-98                 
+                                                                                
+         3 chitra               kapoor               engineer                   
+     60000            production                      08-JAN-98                 
+                                                                                
+
+    EMP_ID F_NAME               L_NAME               JOB_TYPE                   
+---------- -------------------- -------------------- --------------------       
+    SALARY COMMISSION DEPT                 MANAGER_ID DOJ                       
+---------- ---------- -------------------- ---------- ---------                 
+         4 dheeraj              mishra               manager                    
+     75000            sales                         2 27-DEC-01                 
+                                                                                
+         5 emma                                      engineer                   
+     55000            production                      20-MAR-02                 
+                                                                                
+         6 floki                dutt                 accountant                 
+     70000            accounts                        16-JUL-00                 
+                                                                                
+
+    EMP_ID F_NAME               L_NAME               JOB_TYPE                   
+---------- -------------------- -------------------- --------------------       
+    SALARY COMMISSION DEPT                 MANAGER_ID DOJ                       
+---------- ---------- -------------------- ---------- ---------                 
+         7 dheeraj              kumar                clerk                      
+     40000            accounts                      6 01-JUL-16                 
+                                                                                
+         8 saul                 good                 engineer                   
+     60000            r&d                             06-SEP-14                 
+                                                                                
+         9 mou                                       clerk                      
+     30000            sales                         4 08-MAR-18                 
+                                                                                
+
+    EMP_ID F_NAME               L_NAME               JOB_TYPE                   
+---------- -------------------- -------------------- --------------------       
+    SALARY COMMISSION DEPT                 MANAGER_ID DOJ                       
+---------- ---------- -------------------- ---------- ---------                 
+        10 sunny                deol                 salesman                   
+     20000      10000 marketing                       31-MAR-01                 
+                                                                                
+        11 bobby                deol                 engineer                   
+     35000            r&d                           8 17-OCT-17                 
+                                                                                
+        12 amir                 khan                 salesman                   
+     15000            marketing                       11-JAN-13                 
+                                                                                
+
+12 rows selected.
+
+SQL> set linesize 300;
+SQL> SELECT * FROM employ;
+
+    EMP_ID F_NAME               L_NAME               JOB_TYPE                 SALARY COMMISSION DEPT                 MANAGER_ID DOJ                                                                                                                                                                         
+---------- -------------------- -------------------- -------------------- ---------- ---------- -------------------- ---------- ---------                                                                                                                                                                   
+         1 arun                                      manager                   90000            production                      04-JAN-98                                                                                                                                                                   
+         2 barun                kumar                manager                   80000            marketing                       09-FEB-98                                                                                                                                                                   
+         3 chitra               kapoor               engineer                  60000            production                      08-JAN-98                                                                                                                                                                   
+         4 dheeraj              mishra               manager                   75000            sales                         2 27-DEC-01                                                                                                                                                                   
+         5 emma                                      engineer                  55000            production                      20-MAR-02                                                                                                                                                                   
+         6 floki                dutt                 accountant                70000            accounts                        16-JUL-00                                                                                                                                                                   
+         7 dheeraj              kumar                clerk                     40000            accounts                      6 01-JUL-16                                                                                                                                                                   
+         8 saul                 good                 engineer                  60000            r&d                             06-SEP-14                                                                                                                                                                   
+         9 mou                                       clerk                     30000            sales                         4 08-MAR-18                                                                                                                                                                   
+        10 sunny                deol                 salesman                  20000      10000 marketing                       31-MAR-01                                                                                                                                                                   
+        11 bobby                deol                 engineer                  35000            r&d                           8 17-OCT-17                                                                                                                                                                   
+
+    EMP_ID F_NAME               L_NAME               JOB_TYPE                 SALARY COMMISSION DEPT                 MANAGER_ID DOJ                                                                                                                                                                         
+---------- -------------------- -------------------- -------------------- ---------- ---------- -------------------- ---------- ---------                                                                                                                                                                   
+        12 amir                 khan                 salesman                  15000            marketing                       11-JAN-13                                                                                                                                                                   
+
+12 rows selected.
+
+SQL> SELECT job_type, SUM(salary) as total_salary FROM emoloy GROUP BY job_type HAVING total_salary > 100000;
+SELECT job_type, SUM(salary) as total_salary FROM emoloy GROUP BY job_type HAVING total_salary > 100000
+                                                  *
+ERROR at line 1:
+ORA-00942: table or view does not exist 
+
+
+SQL> SELECT job_type, SUM(salary) as total_salary FROM emoloy GROUP BY job_type HAVING total_salary > 100000;
+SELECT job_type, SUM(salary) as total_salary FROM emoloy GROUP BY job_type HAVING total_salary > 100000
+                                                  *
+ERROR at line 1:
+ORA-00942: table or view does not exist 
+
+
+SQL> SELECT job_type, SUM(salary) as total_salary FROM employ GROUP BY job_type HAVING total_salary > 100000;
+SELECT job_type, SUM(salary) as total_salary FROM employ GROUP BY job_type HAVING total_salary > 100000
+                                                                                  *
+ERROR at line 1:
+ORA-00904: "TOTAL_SALARY": invalid identifier 
+
+
+SQL> SELECT job_type, SUM(salary) as total_salary FROM emoloy GROUP BY job_type HAVING SUM(salary) > 100000;
+SELECT job_type, SUM(salary) as total_salary FROM emoloy GROUP BY job_type HAVING SUM(salary) > 100000
+                                                  *
+ERROR at line 1:
+ORA-00942: table or view does not exist 
+
+
+SQL> SELECT job_type, SUM(salary) as total_salary FROM employ GROUP BY job_type HAVING SUM(salary) > 100000;
+
+JOB_TYPE             TOTAL_SALARY                                                                                                                                                                                                                                                                           
+-------------------- ------------                                                                                                                                                                                                                                                                           
+engineer                   210000                                                                                                                                                                                                                                                                           
+manager                    245000                                                                                                                                                                                                                                                                           
+
+SQL> SELECT job_type, SUM(salary) as total_salary FROM employ GROUP BY job_type HAVING SUM(salary) > 100000 AND job_type!='engineer';
+
+JOB_TYPE             TOTAL_SALARY                                                                                                                                                                                                                                                                           
+-------------------- ------------                                                                                                                                                                                                                                                                           
+manager                    245000                                                                                                                                                                                                                                                                           
+
+SQL> 

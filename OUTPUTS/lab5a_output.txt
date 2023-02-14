@@ -1,0 +1,2838 @@
+SQL> CREATE TABLE emp(emp_id NUMBER, f_name VARCHAR(20), l_name VARCHAR(20), job_type VARCHAR(20), salary NUMBER, commission NUMBER, dept VARCHAR(20), manager_id NUMBER, doj DATE);
+CREATE TABLE emp(emp_id NUMBER, f_name VARCHAR(20), l_name VARCHAR(20), job_type VARCHAR(20), salary NUMBER, commission NUMBER, dept VARCHAR(20), manager_id NUMBER, doj DATE)
+             *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object 
+
+
+SQL> CREATE TABLE employ(emp_id NUMBER, f_name VARCHAR(20), l_name VARCHAR(20), job_type VARCHAR(20), salary NUMBER, commission NUMBER, dept VARCHAR(20), manager_id NUMBER, doj DATE);
+
+Table created.
+
+SQL> INSERT INTO employ VALUES(&emp_id, '&f_name', '&l_name', '&job_type', &salary, &commission, '&dept', &manager_id, '&date');
+Enter value for emp_id: 1
+Enter value for f_name: arun
+Enter value for l_name: 
+Enter value for job_type: manager
+Enter value for salary: 90000
+Enter value for commission: 
+Enter value for dept: production
+Enter value for manager_id: 
+Enter value for date: 04-JAN-1998
+old   1: INSERT INTO employ VALUES(&emp_id, '&f_name', '&l_name', '&job_type', &salary, &commission, '&dept', &manager_id, '&date')
+new   1: INSERT INTO employ VALUES(1, 'arun', '', 'manager', 90000, , 'production', , '04-JAN-1998')
+INSERT INTO employ VALUES(1, 'arun', '', 'manager', 90000, , 'production', , '04-JAN-1998')
+                                                           *
+ERROR at line 1:
+ORA-00936: missing expression 
+
+
+SQL> /
+Enter value for emp_id: 1
+Enter value for f_name: arun
+Enter value for l_name: NULL
+Enter value for job_type: manager
+Enter value for salary: 90000
+Enter value for commission: NULL
+Enter value for dept: production
+Enter value for manager_id: NULL
+Enter value for date: 04-JAN-1998
+old   1: INSERT INTO employ VALUES(&emp_id, '&f_name', '&l_name', '&job_type', &salary, &commission, '&dept', &manager_id, '&date')
+new   1: INSERT INTO employ VALUES(1, 'arun', 'NULL', 'manager', 90000, NULL, 'production', NULL, '04-JAN-1998')
+
+1 row created.
+
+SQL> /
+Enter value for emp_id: 2
+Enter value for f_name: barun
+Enter value for l_name: kumar
+Enter value for job_type: manager
+Enter value for salary: 80000
+Enter value for commission: NULL
+Enter value for dept: marketing
+Enter value for manager_id: NULL
+Enter value for date: 09-FEB-1998
+old   1: INSERT INTO employ VALUES(&emp_id, '&f_name', '&l_name', '&job_type', &salary, &commission, '&dept', &manager_id, '&date')
+new   1: INSERT INTO employ VALUES(2, 'barun', 'kumar', 'manager', 80000, NULL, 'marketing', NULL, '09-FEB-1998')
+
+1 row created.
+
+SQL> /
+Enter value for emp_id: 3
+Enter value for f_name: chitra
+Enter value for l_name: kapoor
+Enter value for job_type: engineer
+Enter value for salary: 60000
+Enter value for commission: NULL
+Enter value for dept: production
+Enter value for manager_id: NULL
+Enter value for date: 08-JAN-1998
+old   1: INSERT INTO employ VALUES(&emp_id, '&f_name', '&l_name', '&job_type', &salary, &commission, '&dept', &manager_id, '&date')
+new   1: INSERT INTO employ VALUES(3, 'chitra', 'kapoor', 'engineer', 60000, NULL, 'production', NULL, '08-JAN-1998')
+
+1 row created.
+
+SQL> /
+Enter value for emp_id: 4
+Enter value for f_name: dheeraj
+Enter value for l_name: mishra
+Enter value for job_type: manager
+Enter value for salary: 75000
+Enter value for commission: NULL
+Enter value for dept: sales
+Enter value for manager_id: 2
+Enter value for date: 27-DEC-2001
+old   1: INSERT INTO employ VALUES(&emp_id, '&f_name', '&l_name', '&job_type', &salary, &commission, '&dept', &manager_id, '&date')
+new   1: INSERT INTO employ VALUES(4, 'dheeraj', 'mishra', 'manager', 75000, NULL, 'sales', 2, '27-DEC-2001')
+
+1 row created.
+
+SQL> /
+Enter value for emp_id: 5
+Enter value for f_name: emma
+Enter value for l_name: NULL
+Enter value for job_type: engineer
+Enter value for salary: 55000
+Enter value for commission: NULL
+Enter value for dept: production
+Enter value for manager_id: NULL
+Enter value for date: 20-MAR-2002
+old   1: INSERT INTO employ VALUES(&emp_id, '&f_name', '&l_name', '&job_type', &salary, &commission, '&dept', &manager_id, '&date')
+new   1: INSERT INTO employ VALUES(5, 'emma', 'NULL', 'engineer', 55000, NULL, 'production', NULL, '20-MAR-2002')
+
+1 row created.
+
+SQL> /
+Enter value for emp_id: 6
+Enter value for f_name: floki
+Enter value for l_name: dutt
+Enter value for job_type: accountant
+Enter value for salary: 70000
+Enter value for commission: NULL
+Enter value for dept: accounts
+Enter value for manager_id: NULL
+Enter value for date: 16-JUL-2000
+old   1: INSERT INTO employ VALUES(&emp_id, '&f_name', '&l_name', '&job_type', &salary, &commission, '&dept', &manager_id, '&date')
+new   1: INSERT INTO employ VALUES(6, 'floki', 'dutt', 'accountant', 70000, NULL, 'accounts', NULL, '16-JUL-2000')
+
+1 row created.
+
+SQL> /
+Enter value for emp_id: 7
+Enter value for f_name: dheeraj
+Enter value for l_name: kumar
+Enter value for job_type: clerk
+Enter value for salary: 40000
+Enter value for commission: NULL
+Enter value for dept: accounts
+Enter value for manager_id: 6
+Enter value for date: 01-JUL-2016
+old   1: INSERT INTO employ VALUES(&emp_id, '&f_name', '&l_name', '&job_type', &salary, &commission, '&dept', &manager_id, '&date')
+new   1: INSERT INTO employ VALUES(7, 'dheeraj', 'kumar', 'clerk', 40000, NULL, 'accounts', 6, '01-JUL-2016')
+
+1 row created.
+
+SQL> /
+Enter value for emp_id: 8
+Enter value for f_name: saul
+Enter value for l_name: good
+Enter value for job_type: engineer
+Enter value for salary: 60000
+Enter value for commission: NULL
+Enter value for dept: r&d
+Enter value for manager_id: NULL
+Enter value for date: 06-SEP-2014
+old   1: INSERT INTO employ VALUES(&emp_id, '&f_name', '&l_name', '&job_type', &salary, &commission, '&dept', &manager_id, '&date')
+new   1: INSERT INTO employ VALUES(8, 'saul', 'good', 'engineer', 60000, NULL, 'r&d', NULL, '06-SEP-2014')
+
+1 row created.
+
+SQL> /
+Enter value for emp_id: 9
+Enter value for f_name: mou
+Enter value for l_name: NULL
+Enter value for job_type: clerk
+Enter value for salary: 30000
+Enter value for commission: NULL
+Enter value for dept: sales
+Enter value for manager_id: 4
+Enter value for date: 08-MAR-2018
+old   1: INSERT INTO employ VALUES(&emp_id, '&f_name', '&l_name', '&job_type', &salary, &commission, '&dept', &manager_id, '&date')
+new   1: INSERT INTO employ VALUES(9, 'mou', 'NULL', 'clerk', 30000, NULL, 'sales', 4, '08-MAR-2018')
+
+1 row created.
+
+SQL> /
+Enter value for emp_id: 10
+Enter value for f_name: sunny
+Enter value for l_name: deol
+Enter value for job_type: salesman
+Enter value for salary: 20000
+Enter value for commission: 10000
+Enter value for dept: marketing
+Enter value for manager_id: NULL
+Enter value for date: 31-MAR-01
+old   1: INSERT INTO employ VALUES(&emp_id, '&f_name', '&l_name', '&job_type', &salary, &commission, '&dept', &manager_id, '&date')
+new   1: INSERT INTO employ VALUES(10, 'sunny', 'deol', 'salesman', 20000, 10000, 'marketing', NULL, '31-MAR-01')
+
+1 row created.
+
+SQL> /
+Enter value for emp_id: 11
+Enter value for f_name: bobby
+Enter value for l_name: deol
+Enter value for job_type: engineer
+Enter value for salary: 35000
+Enter value for commission: NULL
+Enter value for dept: r&d
+Enter value for manager_id: 8
+Enter value for date: 17-OCT-17
+old   1: INSERT INTO employ VALUES(&emp_id, '&f_name', '&l_name', '&job_type', &salary, &commission, '&dept', &manager_id, '&date')
+new   1: INSERT INTO employ VALUES(11, 'bobby', 'deol', 'engineer', 35000, NULL, 'r&d', 8, '17-OCT-17')
+
+1 row created.
+
+SQL> /
+Enter value for emp_id: 12
+Enter value for f_name: amir
+Enter value for l_name: khan
+Enter value for job_type: salesman
+Enter value for salary: 15000
+Enter value for commission: NULL
+Enter value for dept: marketing
+Enter value for manager_id: NULL
+Enter value for date: 11-JAN-13
+old   1: INSERT INTO employ VALUES(&emp_id, '&f_name', '&l_name', '&job_type', &salary, &commission, '&dept', &manager_id, '&date')
+new   1: INSERT INTO employ VALUES(12, 'amir', 'khan', 'salesman', 15000, NULL, 'marketing', NULL, '11-JAN-13')
+
+1 row created.
+
+SQL> SELECT * FROM employ
+  2  ;
+
+    EMP_ID F_NAME               L_NAME               JOB_TYPE                   
+---------- -------------------- -------------------- --------------------       
+    SALARY COMMISSION DEPT                 MANAGER_ID DOJ                       
+---------- ---------- -------------------- ---------- ---------                 
+         1 arun                 NULL                 manager                    
+     90000            production                      04-JAN-98                 
+                                                                                
+         2 barun                kumar                manager                    
+     80000            marketing                       09-FEB-98                 
+                                                                                
+         3 chitra               kapoor               engineer                   
+     60000            production                      08-JAN-98                 
+                                                                                
+
+    EMP_ID F_NAME               L_NAME               JOB_TYPE                   
+---------- -------------------- -------------------- --------------------       
+    SALARY COMMISSION DEPT                 MANAGER_ID DOJ                       
+---------- ---------- -------------------- ---------- ---------                 
+         4 dheeraj              mishra               manager                    
+     75000            sales                         2 27-DEC-01                 
+                                                                                
+         5 emma                 NULL                 engineer                   
+     55000            production                      20-MAR-02                 
+                                                                                
+         6 floki                dutt                 accountant                 
+     70000            accounts                        16-JUL-00                 
+                                                                                
+
+    EMP_ID F_NAME               L_NAME               JOB_TYPE                   
+---------- -------------------- -------------------- --------------------       
+    SALARY COMMISSION DEPT                 MANAGER_ID DOJ                       
+---------- ---------- -------------------- ---------- ---------                 
+         7 dheeraj              kumar                clerk                      
+     40000            accounts                      6 01-JUL-16                 
+                                                                                
+         8 saul                 good                 engineer                   
+     60000            r&d                             06-SEP-14                 
+                                                                                
+         9 mou                  NULL                 clerk                      
+     30000            sales                         4 08-MAR-18                 
+                                                                                
+
+    EMP_ID F_NAME               L_NAME               JOB_TYPE                   
+---------- -------------------- -------------------- --------------------       
+    SALARY COMMISSION DEPT                 MANAGER_ID DOJ                       
+---------- ---------- -------------------- ---------- ---------                 
+        10 sunny                deol                 salesman                   
+     20000      10000 marketing                       31-MAR-01                 
+                                                                                
+        11 bobby                deol                 engineer                   
+     35000            r&d                           8 17-OCT-17                 
+                                                                                
+        12 amir                 khan                 salesman                   
+     15000            marketing                       11-JAN-13                 
+                                                                                
+
+12 rows selected.
+
+SQL> set linesize 9
+SQL> ;
+  1  SELECT * FROM employ
+  2* 
+SQL> ;
+  1  SELECT * FROM employ
+  2* 
+SQL> set linesize 9;
+SQL> SELECT * FROM employ;
+SP2-0253: data item 1 ("EMP_ID") will not fit on line
+SQL> set linesize 10
+SQL> SELECT * FROM employ;
+
+    EMP_ID
+----------
+F_NAME    
+----------
+L_NAME    
+----------
+JOB_TYPE  
+----------
+    SALARY
+----------
+COMMISSION
+----------
+DEPT      
+----------
+MANAGER_ID
+----------
+DOJ       
+--------- 
+         1
+
+    EMP_ID
+----------
+F_NAME    
+----------
+L_NAME    
+----------
+JOB_TYPE  
+----------
+    SALARY
+----------
+COMMISSION
+----------
+DEPT      
+----------
+MANAGER_ID
+----------
+DOJ       
+--------- 
+arun      
+
+    EMP_ID
+----------
+F_NAME    
+----------
+L_NAME    
+----------
+JOB_TYPE  
+----------
+    SALARY
+----------
+COMMISSION
+----------
+DEPT      
+----------
+MANAGER_ID
+----------
+DOJ       
+--------- 
+NULL      
+
+    EMP_ID
+----------
+F_NAME    
+----------
+L_NAME    
+----------
+JOB_TYPE  
+----------
+    SALARY
+----------
+COMMISSION
+----------
+DEPT      
+----------
+MANAGER_ID
+----------
+DOJ       
+--------- 
+manager   
+
+    EMP_ID
+----------
+F_NAME    
+----------
+L_NAME    
+----------
+JOB_TYPE  
+----------
+    SALARY
+----------
+COMMISSION
+----------
+DEPT      
+----------
+MANAGER_ID
+----------
+DOJ       
+--------- 
+     90000
+
+    EMP_ID
+----------
+F_NAME    
+----------
+L_NAME    
+----------
+JOB_TYPE  
+----------
+    SALARY
+----------
+COMMISSION
+----------
+DEPT      
+----------
+MANAGER_ID
+----------
+DOJ       
+--------- 
+          
+
+    EMP_ID
+----------
+F_NAME    
+----------
+L_NAME    
+----------
+JOB_TYPE  
+----------
+    SALARY
+----------
+COMMISSION
+----------
+DEPT      
+----------
+MANAGER_ID
+----------
+DOJ       
+--------- 
+production
+
+    EMP_ID
+----------
+F_NAME    
+----------
+L_NAME    
+----------
+JOB_TYPE  
+----------
+    SALARY
+----------
+COMMISSION
+----------
+DEPT      
+----------
+MANAGER_ID
+----------
+DOJ       
+--------- 
+          
+
+    EMP_ID
+----------
+F_NAME    
+----------
+L_NAME    
+----------
+JOB_TYPE  
+----------
+    SALARY
+----------
+COMMISSION
+----------
+DEPT      
+----------
+MANAGER_ID
+----------
+DOJ       
+--------- 
+04-JAN-98 
+
+    EMP_ID
+----------
+F_NAME    
+----------
+L_NAME    
+----------
+JOB_TYPE  
+----------
+    SALARY
+----------
+COMMISSION
+----------
+DEPT      
+----------
+MANAGER_ID
+----------
+DOJ       
+--------- 
+          
+
+    EMP_ID
+----------
+F_NAME    
+----------
+L_NAME    
+----------
+JOB_TYPE  
+----------
+    SALARY
+----------
+COMMISSION
+----------
+DEPT      
+----------
+MANAGER_ID
+----------
+DOJ       
+--------- 
+         2
+
+    EMP_ID
+----------
+F_NAME    
+----------
+L_NAME    
+----------
+JOB_TYPE  
+----------
+    SALARY
+----------
+COMMISSION
+----------
+DEPT      
+----------
+MANAGER_ID
+----------
+DOJ       
+--------- 
+barun     
+
+    EMP_ID
+----------
+F_NAME    
+----------
+L_NAME    
+----------
+JOB_TYPE  
+----------
+    SALARY
+----------
+COMMISSION
+----------
+DEPT      
+----------
+MANAGER_ID
+----------
+DOJ       
+--------- 
+kumar     
+
+    EMP_ID
+----------
+F_NAME    
+----------
+L_NAME    
+----------
+JOB_TYPE  
+----------
+    SALARY
+----------
+COMMISSION
+----------
+DEPT      
+----------
+MANAGER_ID
+----------
+DOJ       
+--------- 
+manager   
+
+    EMP_ID
+----------
+F_NAME    
+----------
+L_NAME    
+----------
+JOB_TYPE  
+----------
+    SALARY
+----------
+COMMISSION
+----------
+DEPT      
+----------
+MANAGER_ID
+----------
+DOJ       
+--------- 
+     80000
+
+    EMP_ID
+----------
+F_NAME    
+----------
+L_NAME    
+----------
+JOB_TYPE  
+----------
+    SALARY
+----------
+COMMISSION
+----------
+DEPT      
+----------
+MANAGER_ID
+----------
+DOJ       
+--------- 
+          
+
+    EMP_ID
+----------
+F_NAME    
+----------
+L_NAME    
+----------
+JOB_TYPE  
+----------
+    SALARY
+----------
+COMMISSION
+----------
+DEPT      
+----------
+MANAGER_ID
+----------
+DOJ       
+--------- 
+marketing 
+
+    EMP_ID
+----------
+F_NAME    
+----------
+L_NAME    
+----------
+JOB_TYPE  
+----------
+    SALARY
+----------
+COMMISSION
+----------
+DEPT      
+----------
+MANAGER_ID
+----------
+DOJ       
+--------- 
+          
+
+    EMP_ID
+----------
+F_NAME    
+----------
+L_NAME    
+----------
+JOB_TYPE  
+----------
+    SALARY
+----------
+COMMISSION
+----------
+DEPT      
+----------
+MANAGER_ID
+----------
+DOJ       
+--------- 
+09-FEB-98 
+
+    EMP_ID
+----------
+F_NAME    
+----------
+L_NAME    
+----------
+JOB_TYPE  
+----------
+    SALARY
+----------
+COMMISSION
+----------
+DEPT      
+----------
+MANAGER_ID
+----------
+DOJ       
+--------- 
+          
+
+    EMP_ID
+----------
+F_NAME    
+----------
+L_NAME    
+----------
+JOB_TYPE  
+----------
+    SALARY
+----------
+COMMISSION
+----------
+DEPT      
+----------
+MANAGER_ID
+----------
+DOJ       
+--------- 
+         3
+
+    EMP_ID
+----------
+F_NAME    
+----------
+L_NAME    
+----------
+JOB_TYPE  
+----------
+    SALARY
+----------
+COMMISSION
+----------
+DEPT      
+----------
+MANAGER_ID
+----------
+DOJ       
+--------- 
+chitra    
+
+    EMP_ID
+----------
+F_NAME    
+----------
+L_NAME    
+----------
+JOB_TYPE  
+----------
+    SALARY
+----------
+COMMISSION
+----------
+DEPT      
+----------
+MANAGER_ID
+----------
+DOJ       
+--------- 
+kapoor    
+
+    EMP_ID
+----------
+F_NAME    
+----------
+L_NAME    
+----------
+JOB_TYPE  
+----------
+    SALARY
+----------
+COMMISSION
+----------
+DEPT      
+----------
+MANAGER_ID
+----------
+DOJ       
+--------- 
+engineer  
+
+    EMP_ID
+----------
+F_NAME    
+----------
+L_NAME    
+----------
+JOB_TYPE  
+----------
+    SALARY
+----------
+COMMISSION
+----------
+DEPT      
+----------
+MANAGER_ID
+----------
+DOJ       
+--------- 
+     60000
+
+    EMP_ID
+----------
+F_NAME    
+----------
+L_NAME    
+----------
+JOB_TYPE  
+----------
+    SALARY
+----------
+COMMISSION
+----------
+DEPT      
+----------
+MANAGER_ID
+----------
+DOJ       
+--------- 
+          
+
+    EMP_ID
+----------
+F_NAME    
+----------
+L_NAME    
+----------
+JOB_TYPE  
+----------
+    SALARY
+----------
+COMMISSION
+----------
+DEPT      
+----------
+MANAGER_ID
+----------
+DOJ       
+--------- 
+production
+
+    EMP_ID
+----------
+F_NAME    
+----------
+L_NAME    
+----------
+JOB_TYPE  
+----------
+    SALARY
+----------
+COMMISSION
+----------
+DEPT      
+----------
+MANAGER_ID
+----------
+DOJ       
+--------- 
+          
+
+    EMP_ID
+----------
+F_NAME    
+----------
+L_NAME    
+----------
+JOB_TYPE  
+----------
+    SALARY
+----------
+COMMISSION
+----------
+DEPT      
+----------
+MANAGER_ID
+----------
+DOJ       
+--------- 
+08-JAN-98 
+
+    EMP_ID
+----------
+F_NAME    
+----------
+L_NAME    
+----------
+JOB_TYPE  
+----------
+    SALARY
+----------
+COMMISSION
+----------
+DEPT      
+----------
+MANAGER_ID
+----------
+DOJ       
+--------- 
+          
+
+    EMP_ID
+----------
+F_NAME    
+----------
+L_NAME    
+----------
+JOB_TYPE  
+----------
+    SALARY
+----------
+COMMISSION
+----------
+DEPT      
+----------
+MANAGER_ID
+----------
+DOJ       
+--------- 
+         4
+
+    EMP_ID
+----------
+F_NAME    
+----------
+L_NAME    
+----------
+JOB_TYPE  
+----------
+    SALARY
+----------
+COMMISSION
+----------
+DEPT      
+----------
+MANAGER_ID
+----------
+DOJ       
+--------- 
+dheeraj   
+
+    EMP_ID
+----------
+F_NAME    
+----------
+L_NAME    
+----------
+JOB_TYPE  
+----------
+    SALARY
+----------
+COMMISSION
+----------
+DEPT      
+----------
+MANAGER_ID
+----------
+DOJ       
+--------- 
+mishra    
+
+    EMP_ID
+----------
+F_NAME    
+----------
+L_NAME    
+----------
+JOB_TYPE  
+----------
+    SALARY
+----------
+COMMISSION
+----------
+DEPT      
+----------
+MANAGER_ID
+----------
+DOJ       
+--------- 
+manager   
+
+    EMP_ID
+----------
+F_NAME    
+----------
+L_NAME    
+----------
+JOB_TYPE  
+----------
+    SALARY
+----------
+COMMISSION
+----------
+DEPT      
+----------
+MANAGER_ID
+----------
+DOJ       
+--------- 
+     75000
+
+    EMP_ID
+----------
+F_NAME    
+----------
+L_NAME    
+----------
+JOB_TYPE  
+----------
+    SALARY
+----------
+COMMISSION
+----------
+DEPT      
+----------
+MANAGER_ID
+----------
+DOJ       
+--------- 
+          
+
+    EMP_ID
+----------
+F_NAME    
+----------
+L_NAME    
+----------
+JOB_TYPE  
+----------
+    SALARY
+----------
+COMMISSION
+----------
+DEPT      
+----------
+MANAGER_ID
+----------
+DOJ       
+--------- 
+sales     
+
+    EMP_ID
+----------
+F_NAME    
+----------
+L_NAME    
+----------
+JOB_TYPE  
+----------
+    SALARY
+----------
+COMMISSION
+----------
+DEPT      
+----------
+MANAGER_ID
+----------
+DOJ       
+--------- 
+         2
+
+    EMP_ID
+----------
+F_NAME    
+----------
+L_NAME    
+----------
+JOB_TYPE  
+----------
+    SALARY
+----------
+COMMISSION
+----------
+DEPT      
+----------
+MANAGER_ID
+----------
+DOJ       
+--------- 
+27-DEC-01 
+
+    EMP_ID
+----------
+F_NAME    
+----------
+L_NAME    
+----------
+JOB_TYPE  
+----------
+    SALARY
+----------
+COMMISSION
+----------
+DEPT      
+----------
+MANAGER_ID
+----------
+DOJ       
+--------- 
+          
+
+    EMP_ID
+----------
+F_NAME    
+----------
+L_NAME    
+----------
+JOB_TYPE  
+----------
+    SALARY
+----------
+COMMISSION
+----------
+DEPT      
+----------
+MANAGER_ID
+----------
+DOJ       
+--------- 
+         5
+
+    EMP_ID
+----------
+F_NAME    
+----------
+L_NAME    
+----------
+JOB_TYPE  
+----------
+    SALARY
+----------
+COMMISSION
+----------
+DEPT      
+----------
+MANAGER_ID
+----------
+DOJ       
+--------- 
+emma      
+
+    EMP_ID
+----------
+F_NAME    
+----------
+L_NAME    
+----------
+JOB_TYPE  
+----------
+    SALARY
+----------
+COMMISSION
+----------
+DEPT      
+----------
+MANAGER_ID
+----------
+DOJ       
+--------- 
+NULL      
+
+    EMP_ID
+----------
+F_NAME    
+----------
+L_NAME    
+----------
+JOB_TYPE  
+----------
+    SALARY
+----------
+COMMISSION
+----------
+DEPT      
+----------
+MANAGER_ID
+----------
+DOJ       
+--------- 
+engineer  
+
+    EMP_ID
+----------
+F_NAME    
+----------
+L_NAME    
+----------
+JOB_TYPE  
+----------
+    SALARY
+----------
+COMMISSION
+----------
+DEPT      
+----------
+MANAGER_ID
+----------
+DOJ       
+--------- 
+     55000
+
+    EMP_ID
+----------
+F_NAME    
+----------
+L_NAME    
+----------
+JOB_TYPE  
+----------
+    SALARY
+----------
+COMMISSION
+----------
+DEPT      
+----------
+MANAGER_ID
+----------
+DOJ       
+--------- 
+          
+
+    EMP_ID
+----------
+F_NAME    
+----------
+L_NAME    
+----------
+JOB_TYPE  
+----------
+    SALARY
+----------
+COMMISSION
+----------
+DEPT      
+----------
+MANAGER_ID
+----------
+DOJ       
+--------- 
+production
+
+    EMP_ID
+----------
+F_NAME    
+----------
+L_NAME    
+----------
+JOB_TYPE  
+----------
+    SALARY
+----------
+COMMISSION
+----------
+DEPT      
+----------
+MANAGER_ID
+----------
+DOJ       
+--------- 
+          
+
+    EMP_ID
+----------
+F_NAME    
+----------
+L_NAME    
+----------
+JOB_TYPE  
+----------
+    SALARY
+----------
+COMMISSION
+----------
+DEPT      
+----------
+MANAGER_ID
+----------
+DOJ       
+--------- 
+20-MAR-02 
+
+    EMP_ID
+----------
+F_NAME    
+----------
+L_NAME    
+----------
+JOB_TYPE  
+----------
+    SALARY
+----------
+COMMISSION
+----------
+DEPT      
+----------
+MANAGER_ID
+----------
+DOJ       
+--------- 
+          
+
+    EMP_ID
+----------
+F_NAME    
+----------
+L_NAME    
+----------
+JOB_TYPE  
+----------
+    SALARY
+----------
+COMMISSION
+----------
+DEPT      
+----------
+MANAGER_ID
+----------
+DOJ       
+--------- 
+         6
+
+    EMP_ID
+----------
+F_NAME    
+----------
+L_NAME    
+----------
+JOB_TYPE  
+----------
+    SALARY
+----------
+COMMISSION
+----------
+DEPT      
+----------
+MANAGER_ID
+----------
+DOJ       
+--------- 
+floki     
+
+    EMP_ID
+----------
+F_NAME    
+----------
+L_NAME    
+----------
+JOB_TYPE  
+----------
+    SALARY
+----------
+COMMISSION
+----------
+DEPT      
+----------
+MANAGER_ID
+----------
+DOJ       
+--------- 
+dutt      
+
+    EMP_ID
+----------
+F_NAME    
+----------
+L_NAME    
+----------
+JOB_TYPE  
+----------
+    SALARY
+----------
+COMMISSION
+----------
+DEPT      
+----------
+MANAGER_ID
+----------
+DOJ       
+--------- 
+accountant
+
+    EMP_ID
+----------
+F_NAME    
+----------
+L_NAME    
+----------
+JOB_TYPE  
+----------
+    SALARY
+----------
+COMMISSION
+----------
+DEPT      
+----------
+MANAGER_ID
+----------
+DOJ       
+--------- 
+     70000
+
+    EMP_ID
+----------
+F_NAME    
+----------
+L_NAME    
+----------
+JOB_TYPE  
+----------
+    SALARY
+----------
+COMMISSION
+----------
+DEPT      
+----------
+MANAGER_ID
+----------
+DOJ       
+--------- 
+          
+
+    EMP_ID
+----------
+F_NAME    
+----------
+L_NAME    
+----------
+JOB_TYPE  
+----------
+    SALARY
+----------
+COMMISSION
+----------
+DEPT      
+----------
+MANAGER_ID
+----------
+DOJ       
+--------- 
+accounts  
+
+    EMP_ID
+----------
+F_NAME    
+----------
+L_NAME    
+----------
+JOB_TYPE  
+----------
+    SALARY
+----------
+COMMISSION
+----------
+DEPT      
+----------
+MANAGER_ID
+----------
+DOJ       
+--------- 
+          
+
+    EMP_ID
+----------
+F_NAME    
+----------
+L_NAME    
+----------
+JOB_TYPE  
+----------
+    SALARY
+----------
+COMMISSION
+----------
+DEPT      
+----------
+MANAGER_ID
+----------
+DOJ       
+--------- 
+16-JUL-00 
+
+    EMP_ID
+----------
+F_NAME    
+----------
+L_NAME    
+----------
+JOB_TYPE  
+----------
+    SALARY
+----------
+COMMISSION
+----------
+DEPT      
+----------
+MANAGER_ID
+----------
+DOJ       
+--------- 
+          
+
+    EMP_ID
+----------
+F_NAME    
+----------
+L_NAME    
+----------
+JOB_TYPE  
+----------
+    SALARY
+----------
+COMMISSION
+----------
+DEPT      
+----------
+MANAGER_ID
+----------
+DOJ       
+--------- 
+         7
+
+    EMP_ID
+----------
+F_NAME    
+----------
+L_NAME    
+----------
+JOB_TYPE  
+----------
+    SALARY
+----------
+COMMISSION
+----------
+DEPT      
+----------
+MANAGER_ID
+----------
+DOJ       
+--------- 
+dheeraj   
+
+    EMP_ID
+----------
+F_NAME    
+----------
+L_NAME    
+----------
+JOB_TYPE  
+----------
+    SALARY
+----------
+COMMISSION
+----------
+DEPT      
+----------
+MANAGER_ID
+----------
+DOJ       
+--------- 
+kumar     
+
+    EMP_ID
+----------
+F_NAME    
+----------
+L_NAME    
+----------
+JOB_TYPE  
+----------
+    SALARY
+----------
+COMMISSION
+----------
+DEPT      
+----------
+MANAGER_ID
+----------
+DOJ       
+--------- 
+clerk     
+
+    EMP_ID
+----------
+F_NAME    
+----------
+L_NAME    
+----------
+JOB_TYPE  
+----------
+    SALARY
+----------
+COMMISSION
+----------
+DEPT      
+----------
+MANAGER_ID
+----------
+DOJ       
+--------- 
+     40000
+
+    EMP_ID
+----------
+F_NAME    
+----------
+L_NAME    
+----------
+JOB_TYPE  
+----------
+    SALARY
+----------
+COMMISSION
+----------
+DEPT      
+----------
+MANAGER_ID
+----------
+DOJ       
+--------- 
+          
+
+    EMP_ID
+----------
+F_NAME    
+----------
+L_NAME    
+----------
+JOB_TYPE  
+----------
+    SALARY
+----------
+COMMISSION
+----------
+DEPT      
+----------
+MANAGER_ID
+----------
+DOJ       
+--------- 
+accounts  
+
+    EMP_ID
+----------
+F_NAME    
+----------
+L_NAME    
+----------
+JOB_TYPE  
+----------
+    SALARY
+----------
+COMMISSION
+----------
+DEPT      
+----------
+MANAGER_ID
+----------
+DOJ       
+--------- 
+         6
+
+    EMP_ID
+----------
+F_NAME    
+----------
+L_NAME    
+----------
+JOB_TYPE  
+----------
+    SALARY
+----------
+COMMISSION
+----------
+DEPT      
+----------
+MANAGER_ID
+----------
+DOJ       
+--------- 
+01-JUL-16 
+
+    EMP_ID
+----------
+F_NAME    
+----------
+L_NAME    
+----------
+JOB_TYPE  
+----------
+    SALARY
+----------
+COMMISSION
+----------
+DEPT      
+----------
+MANAGER_ID
+----------
+DOJ       
+--------- 
+          
+
+    EMP_ID
+----------
+F_NAME    
+----------
+L_NAME    
+----------
+JOB_TYPE  
+----------
+    SALARY
+----------
+COMMISSION
+----------
+DEPT      
+----------
+MANAGER_ID
+----------
+DOJ       
+--------- 
+         8
+
+    EMP_ID
+----------
+F_NAME    
+----------
+L_NAME    
+----------
+JOB_TYPE  
+----------
+    SALARY
+----------
+COMMISSION
+----------
+DEPT      
+----------
+MANAGER_ID
+----------
+DOJ       
+--------- 
+saul      
+
+    EMP_ID
+----------
+F_NAME    
+----------
+L_NAME    
+----------
+JOB_TYPE  
+----------
+    SALARY
+----------
+COMMISSION
+----------
+DEPT      
+----------
+MANAGER_ID
+----------
+DOJ       
+--------- 
+good      
+
+    EMP_ID
+----------
+F_NAME    
+----------
+L_NAME    
+----------
+JOB_TYPE  
+----------
+    SALARY
+----------
+COMMISSION
+----------
+DEPT      
+----------
+MANAGER_ID
+----------
+DOJ       
+--------- 
+engineer  
+
+    EMP_ID
+----------
+F_NAME    
+----------
+L_NAME    
+----------
+JOB_TYPE  
+----------
+    SALARY
+----------
+COMMISSION
+----------
+DEPT      
+----------
+MANAGER_ID
+----------
+DOJ       
+--------- 
+     60000
+
+    EMP_ID
+----------
+F_NAME    
+----------
+L_NAME    
+----------
+JOB_TYPE  
+----------
+    SALARY
+----------
+COMMISSION
+----------
+DEPT      
+----------
+MANAGER_ID
+----------
+DOJ       
+--------- 
+          
+
+    EMP_ID
+----------
+F_NAME    
+----------
+L_NAME    
+----------
+JOB_TYPE  
+----------
+    SALARY
+----------
+COMMISSION
+----------
+DEPT      
+----------
+MANAGER_ID
+----------
+DOJ       
+--------- 
+r&d       
+
+    EMP_ID
+----------
+F_NAME    
+----------
+L_NAME    
+----------
+JOB_TYPE  
+----------
+    SALARY
+----------
+COMMISSION
+----------
+DEPT      
+----------
+MANAGER_ID
+----------
+DOJ       
+--------- 
+          
+
+    EMP_ID
+----------
+F_NAME    
+----------
+L_NAME    
+----------
+JOB_TYPE  
+----------
+    SALARY
+----------
+COMMISSION
+----------
+DEPT      
+----------
+MANAGER_ID
+----------
+DOJ       
+--------- 
+06-SEP-14 
+
+    EMP_ID
+----------
+F_NAME    
+----------
+L_NAME    
+----------
+JOB_TYPE  
+----------
+    SALARY
+----------
+COMMISSION
+----------
+DEPT      
+----------
+MANAGER_ID
+----------
+DOJ       
+--------- 
+          
+
+    EMP_ID
+----------
+F_NAME    
+----------
+L_NAME    
+----------
+JOB_TYPE  
+----------
+    SALARY
+----------
+COMMISSION
+----------
+DEPT      
+----------
+MANAGER_ID
+----------
+DOJ       
+--------- 
+         9
+
+    EMP_ID
+----------
+F_NAME    
+----------
+L_NAME    
+----------
+JOB_TYPE  
+----------
+    SALARY
+----------
+COMMISSION
+----------
+DEPT      
+----------
+MANAGER_ID
+----------
+DOJ       
+--------- 
+mou       
+
+    EMP_ID
+----------
+F_NAME    
+----------
+L_NAME    
+----------
+JOB_TYPE  
+----------
+    SALARY
+----------
+COMMISSION
+----------
+DEPT      
+----------
+MANAGER_ID
+----------
+DOJ       
+--------- 
+NULL      
+
+    EMP_ID
+----------
+F_NAME    
+----------
+L_NAME    
+----------
+JOB_TYPE  
+----------
+    SALARY
+----------
+COMMISSION
+----------
+DEPT      
+----------
+MANAGER_ID
+----------
+DOJ       
+--------- 
+clerk     
+
+    EMP_ID
+----------
+F_NAME    
+----------
+L_NAME    
+----------
+JOB_TYPE  
+----------
+    SALARY
+----------
+COMMISSION
+----------
+DEPT      
+----------
+MANAGER_ID
+----------
+DOJ       
+--------- 
+     30000
+
+    EMP_ID
+----------
+F_NAME    
+----------
+L_NAME    
+----------
+JOB_TYPE  
+----------
+    SALARY
+----------
+COMMISSION
+----------
+DEPT      
+----------
+MANAGER_ID
+----------
+DOJ       
+--------- 
+          
+
+    EMP_ID
+----------
+F_NAME    
+----------
+L_NAME    
+----------
+JOB_TYPE  
+----------
+    SALARY
+----------
+COMMISSION
+----------
+DEPT      
+----------
+MANAGER_ID
+----------
+DOJ       
+--------- 
+sales     
+
+    EMP_ID
+----------
+F_NAME    
+----------
+L_NAME    
+----------
+JOB_TYPE  
+----------
+    SALARY
+----------
+COMMISSION
+----------
+DEPT      
+----------
+MANAGER_ID
+----------
+DOJ       
+--------- 
+         4
+
+    EMP_ID
+----------
+F_NAME    
+----------
+L_NAME    
+----------
+JOB_TYPE  
+----------
+    SALARY
+----------
+COMMISSION
+----------
+DEPT      
+----------
+MANAGER_ID
+----------
+DOJ       
+--------- 
+08-MAR-18 
+
+    EMP_ID
+----------
+F_NAME    
+----------
+L_NAME    
+----------
+JOB_TYPE  
+----------
+    SALARY
+----------
+COMMISSION
+----------
+DEPT      
+----------
+MANAGER_ID
+----------
+DOJ       
+--------- 
+          
+
+    EMP_ID
+----------
+F_NAME    
+----------
+L_NAME    
+----------
+JOB_TYPE  
+----------
+    SALARY
+----------
+COMMISSION
+----------
+DEPT      
+----------
+MANAGER_ID
+----------
+DOJ       
+--------- 
+        10
+
+    EMP_ID
+----------
+F_NAME    
+----------
+L_NAME    
+----------
+JOB_TYPE  
+----------
+    SALARY
+----------
+COMMISSION
+----------
+DEPT      
+----------
+MANAGER_ID
+----------
+DOJ       
+--------- 
+sunny     
+
+    EMP_ID
+----------
+F_NAME    
+----------
+L_NAME    
+----------
+JOB_TYPE  
+----------
+    SALARY
+----------
+COMMISSION
+----------
+DEPT      
+----------
+MANAGER_ID
+----------
+DOJ       
+--------- 
+deol      
+
+    EMP_ID
+----------
+F_NAME    
+----------
+L_NAME    
+----------
+JOB_TYPE  
+----------
+    SALARY
+----------
+COMMISSION
+----------
+DEPT      
+----------
+MANAGER_ID
+----------
+DOJ       
+--------- 
+salesman  
+
+    EMP_ID
+----------
+F_NAME    
+----------
+L_NAME    
+----------
+JOB_TYPE  
+----------
+    SALARY
+----------
+COMMISSION
+----------
+DEPT      
+----------
+MANAGER_ID
+----------
+DOJ       
+--------- 
+     20000
+
+    EMP_ID
+----------
+F_NAME    
+----------
+L_NAME    
+----------
+JOB_TYPE  
+----------
+    SALARY
+----------
+COMMISSION
+----------
+DEPT      
+----------
+MANAGER_ID
+----------
+DOJ       
+--------- 
+     10000
+
+    EMP_ID
+----------
+F_NAME    
+----------
+L_NAME    
+----------
+JOB_TYPE  
+----------
+    SALARY
+----------
+COMMISSION
+----------
+DEPT      
+----------
+MANAGER_ID
+----------
+DOJ       
+--------- 
+marketing 
+
+    EMP_ID
+----------
+F_NAME    
+----------
+L_NAME    
+----------
+JOB_TYPE  
+----------
+    SALARY
+----------
+COMMISSION
+----------
+DEPT      
+----------
+MANAGER_ID
+----------
+DOJ       
+--------- 
+          
+
+    EMP_ID
+----------
+F_NAME    
+----------
+L_NAME    
+----------
+JOB_TYPE  
+----------
+    SALARY
+----------
+COMMISSION
+----------
+DEPT      
+----------
+MANAGER_ID
+----------
+DOJ       
+--------- 
+31-MAR-01 
+
+    EMP_ID
+----------
+F_NAME    
+----------
+L_NAME    
+----------
+JOB_TYPE  
+----------
+    SALARY
+----------
+COMMISSION
+----------
+DEPT      
+----------
+MANAGER_ID
+----------
+DOJ       
+--------- 
+          
+
+    EMP_ID
+----------
+F_NAME    
+----------
+L_NAME    
+----------
+JOB_TYPE  
+----------
+    SALARY
+----------
+COMMISSION
+----------
+DEPT      
+----------
+MANAGER_ID
+----------
+DOJ       
+--------- 
+        11
+
+    EMP_ID
+----------
+F_NAME    
+----------
+L_NAME    
+----------
+JOB_TYPE  
+----------
+    SALARY
+----------
+COMMISSION
+----------
+DEPT      
+----------
+MANAGER_ID
+----------
+DOJ       
+--------- 
+bobby     
+
+    EMP_ID
+----------
+F_NAME    
+----------
+L_NAME    
+----------
+JOB_TYPE  
+----------
+    SALARY
+----------
+COMMISSION
+----------
+DEPT      
+----------
+MANAGER_ID
+----------
+DOJ       
+--------- 
+deol      
+
+    EMP_ID
+----------
+F_NAME    
+----------
+L_NAME    
+----------
+JOB_TYPE  
+----------
+    SALARY
+----------
+COMMISSION
+----------
+DEPT      
+----------
+MANAGER_ID
+----------
+DOJ       
+--------- 
+engineer  
+
+    EMP_ID
+----------
+F_NAME    
+----------
+L_NAME    
+----------
+JOB_TYPE  
+----------
+    SALARY
+----------
+COMMISSION
+----------
+DEPT      
+----------
+MANAGER_ID
+----------
+DOJ       
+--------- 
+     35000
+
+    EMP_ID
+----------
+F_NAME    
+----------
+L_NAME    
+----------
+JOB_TYPE  
+----------
+    SALARY
+----------
+COMMISSION
+----------
+DEPT      
+----------
+MANAGER_ID
+----------
+DOJ       
+--------- 
+          
+
+    EMP_ID
+----------
+F_NAME    
+----------
+L_NAME    
+----------
+JOB_TYPE  
+----------
+    SALARY
+----------
+COMMISSION
+----------
+DEPT      
+----------
+MANAGER_ID
+----------
+DOJ       
+--------- 
+r&d       
+
+    EMP_ID
+----------
+F_NAME    
+----------
+L_NAME    
+----------
+JOB_TYPE  
+----------
+    SALARY
+----------
+COMMISSION
+----------
+DEPT      
+----------
+MANAGER_ID
+----------
+DOJ       
+--------- 
+         8
+
+    EMP_ID
+----------
+F_NAME    
+----------
+L_NAME    
+----------
+JOB_TYPE  
+----------
+    SALARY
+----------
+COMMISSION
+----------
+DEPT      
+----------
+MANAGER_ID
+----------
+DOJ       
+--------- 
+17-OCT-17 
+
+    EMP_ID
+----------
+F_NAME    
+----------
+L_NAME    
+----------
+JOB_TYPE  
+----------
+    SALARY
+----------
+COMMISSION
+----------
+DEPT      
+----------
+MANAGER_ID
+----------
+DOJ       
+--------- 
+          
+
+    EMP_ID
+----------
+F_NAME    
+----------
+L_NAME    
+----------
+JOB_TYPE  
+----------
+    SALARY
+----------
+COMMISSION
+----------
+DEPT      
+----------
+MANAGER_ID
+----------
+DOJ       
+--------- 
+        12
+
+    EMP_ID
+----------
+F_NAME    
+----------
+L_NAME    
+----------
+JOB_TYPE  
+----------
+    SALARY
+----------
+COMMISSION
+----------
+DEPT      
+----------
+MANAGER_ID
+----------
+DOJ       
+--------- 
+amir      
+
+    EMP_ID
+----------
+F_NAME    
+----------
+L_NAME    
+----------
+JOB_TYPE  
+----------
+    SALARY
+----------
+COMMISSION
+----------
+DEPT      
+----------
+MANAGER_ID
+----------
+DOJ       
+--------- 
+khan      
+
+    EMP_ID
+----------
+F_NAME    
+----------
+L_NAME    
+----------
+JOB_TYPE  
+----------
+    SALARY
+----------
+COMMISSION
+----------
+DEPT      
+----------
+MANAGER_ID
+----------
+DOJ       
+--------- 
+salesman  
+
+    EMP_ID
+----------
+F_NAME    
+----------
+L_NAME    
+----------
+JOB_TYPE  
+----------
+    SALARY
+----------
+COMMISSION
+----------
+DEPT      
+----------
+MANAGER_ID
+----------
+DOJ       
+--------- 
+     15000
+
+    EMP_ID
+----------
+F_NAME    
+----------
+L_NAME    
+----------
+JOB_TYPE  
+----------
+    SALARY
+----------
+COMMISSION
+----------
+DEPT      
+----------
+MANAGER_ID
+----------
+DOJ       
+--------- 
+          
+
+    EMP_ID
+----------
+F_NAME    
+----------
+L_NAME    
+----------
+JOB_TYPE  
+----------
+    SALARY
+----------
+COMMISSION
+----------
+DEPT      
+----------
+MANAGER_ID
+----------
+DOJ       
+--------- 
+marketing 
+
+    EMP_ID
+----------
+F_NAME    
+----------
+L_NAME    
+----------
+JOB_TYPE  
+----------
+    SALARY
+----------
+COMMISSION
+----------
+DEPT      
+----------
+MANAGER_ID
+----------
+DOJ       
+--------- 
+          
+
+    EMP_ID
+----------
+F_NAME    
+----------
+L_NAME    
+----------
+JOB_TYPE  
+----------
+    SALARY
+----------
+COMMISSION
+----------
+DEPT      
+----------
+MANAGER_ID
+----------
+DOJ       
+--------- 
+11-JAN-13 
+
+    EMP_ID
+----------
+F_NAME    
+----------
+L_NAME    
+----------
+JOB_TYPE  
+----------
+    SALARY
+----------
+COMMISSION
+----------
+DEPT      
+----------
+MANAGER_ID
+----------
+DOJ       
+--------- 
+          
+
+12 rows selected.
+
+SQL> set linesize 300;
+SQL> SELECT * FROM employ;
+
+    EMP_ID F_NAME               L_NAME               JOB_TYPE                 SALARY COMMISSION DEPT                 MANAGER_ID DOJ                                                                                                                                                                         
+---------- -------------------- -------------------- -------------------- ---------- ---------- -------------------- ---------- ---------                                                                                                                                                                   
+         1 arun                 NULL                 manager                   90000            production                      04-JAN-98                                                                                                                                                                   
+         2 barun                kumar                manager                   80000            marketing                       09-FEB-98                                                                                                                                                                   
+         3 chitra               kapoor               engineer                  60000            production                      08-JAN-98                                                                                                                                                                   
+         4 dheeraj              mishra               manager                   75000            sales                         2 27-DEC-01                                                                                                                                                                   
+         5 emma                 NULL                 engineer                  55000            production                      20-MAR-02                                                                                                                                                                   
+         6 floki                dutt                 accountant                70000            accounts                        16-JUL-00                                                                                                                                                                   
+         7 dheeraj              kumar                clerk                     40000            accounts                      6 01-JUL-16                                                                                                                                                                   
+         8 saul                 good                 engineer                  60000            r&d                             06-SEP-14                                                                                                                                                                   
+         9 mou                  NULL                 clerk                     30000            sales                         4 08-MAR-18                                                                                                                                                                   
+        10 sunny                deol                 salesman                  20000      10000 marketing                       31-MAR-01                                                                                                                                                                   
+        11 bobby                deol                 engineer                  35000            r&d                           8 17-OCT-17                                                                                                                                                                   
+
+    EMP_ID F_NAME               L_NAME               JOB_TYPE                 SALARY COMMISSION DEPT                 MANAGER_ID DOJ                                                                                                                                                                         
+---------- -------------------- -------------------- -------------------- ---------- ---------- -------------------- ---------- ---------                                                                                                                                                                   
+        12 amir                 khan                 salesman                  15000            marketing                       11-JAN-13                                                                                                                                                                   
+
+12 rows selected.
+
+SQL> UPDATE employ SET l_name = '' WHERE l_name='NULL';
+
+3 rows updated.
+
+SQL> SELECT * FROM employ;
+
+    EMP_ID F_NAME               L_NAME               JOB_TYPE                 SALARY COMMISSION DEPT                 MANAGER_ID DOJ                                                                                                                                                                         
+---------- -------------------- -------------------- -------------------- ---------- ---------- -------------------- ---------- ---------                                                                                                                                                                   
+         1 arun                                      manager                   90000            production                      04-JAN-98                                                                                                                                                                   
+         2 barun                kumar                manager                   80000            marketing                       09-FEB-98                                                                                                                                                                   
+         3 chitra               kapoor               engineer                  60000            production                      08-JAN-98                                                                                                                                                                   
+         4 dheeraj              mishra               manager                   75000            sales                         2 27-DEC-01                                                                                                                                                                   
+         5 emma                                      engineer                  55000            production                      20-MAR-02                                                                                                                                                                   
+         6 floki                dutt                 accountant                70000            accounts                        16-JUL-00                                                                                                                                                                   
+         7 dheeraj              kumar                clerk                     40000            accounts                      6 01-JUL-16                                                                                                                                                                   
+         8 saul                 good                 engineer                  60000            r&d                             06-SEP-14                                                                                                                                                                   
+         9 mou                                       clerk                     30000            sales                         4 08-MAR-18                                                                                                                                                                   
+        10 sunny                deol                 salesman                  20000      10000 marketing                       31-MAR-01                                                                                                                                                                   
+        11 bobby                deol                 engineer                  35000            r&d                           8 17-OCT-17                                                                                                                                                                   
+
+    EMP_ID F_NAME               L_NAME               JOB_TYPE                 SALARY COMMISSION DEPT                 MANAGER_ID DOJ                                                                                                                                                                         
+---------- -------------------- -------------------- -------------------- ---------- ---------- -------------------- ---------- ---------                                                                                                                                                                   
+        12 amir                 khan                 salesman                  15000            marketing                       11-JAN-13                                                                                                                                                                   
+
+12 rows selected.
+
+SQL> SELECT dept, AVG(salary) FROM employ GROUP BY dept;
+
+DEPT                 AVG(SALARY)                                                                                                                                                                                                                                                                            
+-------------------- -----------                                                                                                                                                                                                                                                                            
+accounts                   55000                                                                                                                                                                                                                                                                            
+production            68333.3333                                                                                                                                                                                                                                                                            
+sales                      52500                                                                                                                                                                                                                                                                            
+r&d                        47500                                                                                                                                                                                                                                                                            
+marketing             38333.3333                                                                                                                                                                                                                                                                            
+
+SQL> SELECT dept, job_type, AVG(salary) FROM employ GROUP BY job_type;
+SELECT dept, job_type, AVG(salary) FROM employ GROUP BY job_type
+       *
+ERROR at line 1:
+ORA-00979: not a GROUP BY expression 
+
+
+SQL> SELECT job_type, dept, AVG(salary) FROM employ GROUP BY job_type;
+SELECT job_type, dept, AVG(salary) FROM employ GROUP BY job_type
+                 *
+ERROR at line 1:
+ORA-00979: not a GROUP BY expression 
+
+
+SQL> SELECT job_type, AVG(salary) FROM employ GROUP BY job_type;
+
+JOB_TYPE             AVG(SALARY)                                                                                                                                                                                                                                                                            
+-------------------- -----------                                                                                                                                                                                                                                                                            
+salesman                   17500                                                                                                                                                                                                                                                                            
+engineer                   52500                                                                                                                                                                                                                                                                            
+accountant                 70000                                                                                                                                                                                                                                                                            
+clerk                      35000                                                                                                                                                                                                                                                                            
+manager               81666.6667                                                                                                                                                                                                                                                                            
+
+SQL> SELECT * FROM employ;
+
+    EMP_ID F_NAME               L_NAME               JOB_TYPE                 SALARY COMMISSION DEPT                 MANAGER_ID DOJ                                                                                                                                                                         
+---------- -------------------- -------------------- -------------------- ---------- ---------- -------------------- ---------- ---------                                                                                                                                                                   
+         1 arun                                      manager                   90000            production                      04-JAN-98                                                                                                                                                                   
+         2 barun                kumar                manager                   80000            marketing                       09-FEB-98                                                                                                                                                                   
+         3 chitra               kapoor               engineer                  60000            production                      08-JAN-98                                                                                                                                                                   
+         4 dheeraj              mishra               manager                   75000            sales                         2 27-DEC-01                                                                                                                                                                   
+         5 emma                                      engineer                  55000            production                      20-MAR-02                                                                                                                                                                   
+         6 floki                dutt                 accountant                70000            accounts                        16-JUL-00                                                                                                                                                                   
+         7 dheeraj              kumar                clerk                     40000            accounts                      6 01-JUL-16                                                                                                                                                                   
+         8 saul                 good                 engineer                  60000            r&d                             06-SEP-14                                                                                                                                                                   
+         9 mou                                       clerk                     30000            sales                         4 08-MAR-18                                                                                                                                                                   
+        10 sunny                deol                 salesman                  20000      10000 marketing                       31-MAR-01                                                                                                                                                                   
+        11 bobby                deol                 engineer                  35000            r&d                           8 17-OCT-17                                                                                                                                                                   
+
+    EMP_ID F_NAME               L_NAME               JOB_TYPE                 SALARY COMMISSION DEPT                 MANAGER_ID DOJ                                                                                                                                                                         
+---------- -------------------- -------------------- -------------------- ---------- ---------- -------------------- ---------- ---------                                                                                                                                                                   
+        12 amir                 khan                 salesman                  15000            marketing                       11-JAN-13                                                                                                                                                                   
+
+12 rows selected.
+
+SQL> SELECT dept, AVG(salary) as avg_salary FROM employ GROUP BY dept HAVING AVG(salary) > 40000;
+
+DEPT                 AVG_SALARY                                                                                                                                                                                                                                                                             
+-------------------- ----------                                                                                                                                                                                                                                                                             
+accounts                  55000                                                                                                                                                                                                                                                                             
+production           68333.3333                                                                                                                                                                                                                                                                             
+sales                     52500                                                                                                                                                                                                                                                                             
+r&d                       47500                                                                                                                                                                                                                                                                             
+
+SQL> SELECT dept FROM employ GROUP BY dept HAVING MAX(salary) > 55000;
+
+DEPT                                                                                                                                                                                                                                                                                                        
+--------------------                                                                                                                                                                                                                                                                                        
+accounts                                                                                                                                                                                                                                                                                                    
+production                                                                                                                                                                                                                                                                                                  
+sales                                                                                                                                                                                                                                                                                                       
+r&d                                                                                                                                                                                                                                                                                                         
+marketing                                                                                                                                                                                                                                                                                                   
+
+SQL> SELECT dept, AVG(salary) as avg_salary FROM employ WHERE dept IN (SELECT department FROM employ GROUP BY dept HAVING MAX(salary) > 55000) GROUP BY dept;
+SELECT dept, AVG(salary) as avg_salary FROM employ WHERE dept IN (SELECT department FROM employ GROUP BY dept HAVING MAX(salary) > 55000) GROUP BY dept
+                                                                         *
+ERROR at line 1:
+ORA-00904: "DEPARTMENT": invalid identifier 
+
+
+SQL> SELECT dept, AVG(salary) as avg_salary FROM employ WHERE dept IN (SELECT dept FROM employ GROUP BY dept HAVING MAX(salary) > 55000) GROUP BY dept;
+
+DEPT                 AVG_SALARY                                                                                                                                                                                                                                                                             
+-------------------- ----------                                                                                                                                                                                                                                                                             
+accounts                  55000                                                                                                                                                                                                                                                                             
+production           68333.3333                                                                                                                                                                                                                                                                             
+sales                     52500                                                                                                                                                                                                                                                                             
+r&d                       47500                                                                                                                                                                                                                                                                             
+marketing            38333.3333                                                                                                                                                                                                                                                                             
+
+SQL> SELECT job_type, SUM(salary+commission) as total_salary FROM employ GROUP BY job_type HAVING SUM(salary+commission) > 100000;
+
+no rows selected
+
+SQL> SELECT job_type, SUM(salary) as total_salary FROM employ GROUP BY job_type HAVING SUM(salary) > 100000;
+
+JOB_TYPE             TOTAL_SALARY                                                                                                                                                                                                                                                                           
+-------------------- ------------                                                                                                                                                                                                                                                                           
+engineer                   210000                                                                                                                                                                                                                                                                           
+manager                    245000                                                                                                                                                                                                                                                                           
+
+SQL> 
