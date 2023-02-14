@@ -1,4 +1,4 @@
-# INSERT ALL ROWS AT A TIME:
+# INSERT ALL DATA AT A TIME:
 
 INSERT INTO emp VALUES('&empname',&empno);
 
