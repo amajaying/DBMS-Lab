@@ -32,7 +32,6 @@ ASSIGNMENT BASED ON DUAL TABLE
     > SELECT CONCAT('ORACLE','**') as concatenated_string FROM dual;
 16.	Retrieve the last month specified in system date.
     > SELECT TO_CHAR(ADD_MONTHS(SYSDATE, -1), 'Month') as last_month FROM dual;
-    > SELECT TO_CHAR(ADD_MONTHS(SYSDATE, -1)) as last_month FROM dual;
 17.	Retrieve number of months between 01-01-07 to 01-05-07.
     > SELECT MONTHS_BETWEEN(TO_DATE('01-05-07', 'DD-MM-YY'), TO_DATE('01-01-07', 'DD-MM-YY')) as months FROM dual;
 18.	Round 56.23 using negative numbers(e.g.-1,-2, and-3)
