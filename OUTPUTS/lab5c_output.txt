@@ -1,0 +1,35 @@
+SQL> SELECT job_type, SUM(salary) AS total_salary FROM employ WHERE job_types != 'engineer' GROUP BY job_type HAVING SUM(salary) > 60000 ORDER BY totalsalary ASC;
+SELECT job_type, SUM(salary) AS total_salary FROM employ WHERE job_types != 'engineer' GROUP BY job_type HAVING SUM(salary) > 60000 ORDER BY totalsalary ASC
+                                                                                                                                             *
+ERROR at line 1:
+ORA-00904: "TOTALSALARY": invalid identifier 
+
+
+SQL> SELECT job_type, SUM(salary) AS total_salary FROM employ WHERE job_types != 'engineer' GROUP BY job_type HAVING SUM(salary) > 60000 ORDER BY SUM(salary) ASC;
+SELECT job_type, SUM(salary) AS total_salary FROM employ WHERE job_types != 'engineer' GROUP BY job_type HAVING SUM(salary) > 60000 ORDER BY SUM(salary) ASC
+                                                               *
+ERROR at line 1:
+ORA-00904: "JOB_TYPES": invalid identifier 
+
+
+SQL> SELECT job_type, SUM(salary) AS total_salary FROM employ WHERE job_type != 'engineer' GROUP BY job_type HAVING SUM(salary) > 60000 ORDER BY SUM(salary) ASC;
+
+JOB_TYPE             TOTAL_SALARY                                               
+-------------------- ------------                                               
+accountant                  70000                                               
+clerk                       70000                                               
+manager                    245000                                               
+
+SQL> SELECT job_type, SUM(salary) AS total_salary FROM employ WHERE job_type != 'engineer' GROUP BY job_type HAVING SUM(salary) > 50000 ORDER BY SUM(salary) DESC;
+
+JOB_TYPE             TOTAL_SALARY                                               
+-------------------- ------------                                               
+manager                    245000                                               
+accountant                  70000                                               
+clerk                       70000                                               
+
+SQL> commit;
+
+Commit complete.
+
+SQL> spool off;

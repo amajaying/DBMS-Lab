@@ -6,7 +6,4 @@
 6. SELECT job_type, SUM(salary) as total_salary FROM employ GROUP BY job_type HAVING SUM(salary) > 100000;
 7. SELECT job_type, SUM(salary) as total_salary FROM employ GROUP BY job_type HAVING SUM(salary) > 100000 AND job_type!='engineer';
 8. SELECT job_type, SUM(salary) AS total_salary FROM employ WHERE job_type != 'engineer' GROUP BY job_type HAVING SUM(salary) > 60000 ORDER BY SUM(salary) ASC;
-
-
-
-
+9. SELECT job_type, SUM(salary) AS total_salary FROM employ WHERE job_type != 'engineer' GROUP BY job_type HAVING SUM(salary) > 50000 ORDER BY SUM(salary) DESC;

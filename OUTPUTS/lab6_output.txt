@@ -1,0 +1,564 @@
+SQL> connect c21053264;
+Connected.
+SQL> CREATE TABLE emp06(emp_no INT PRIMARY KEY, f_name VARCHAR(20) NOT NULL, l_name VARCHAR(20),salary FLOAT,dept_no INT);
+
+Table created.
+
+SQL> INSERT INTO emp06('&emp_no'
+  2  , '&f_name', '&l_name', &salary, &dept_no);
+Enter value for emp_no: 101
+old   1: INSERT INTO emp06('&emp_no'
+new   1: INSERT INTO emp06('101'
+Enter value for f_name: Jai
+Enter value for l_name: 
+Enter value for salary: 90000
+Enter value for dept_no: 1
+old   2: , '&f_name', '&l_name', &salary, &dept_no)
+new   2: , 'Jai', '', 90000, 1)
+INSERT INTO emp06('101'
+                  *
+ERROR at line 1:
+ORA-00928: missing SELECT keyword 
+
+
+SQL> INSERT INTO emp06('&emp_no','&f_name','&l_name',&salary,&dept_no);
+Enter value for emp_no: 102
+Enter value for f_name: Viru
+Enter value for l_name: 
+Enter value for salary: 80000
+Enter value for dept_no: 1
+old   1: INSERT INTO emp06('&emp_no','&f_name','&l_name',&salary,&dept_no)
+new   1: INSERT INTO emp06('102','Viru','',80000,1)
+INSERT INTO emp06('102','Viru','',80000,1)
+                  *
+ERROR at line 1:
+ORA-00928: missing SELECT keyword 
+
+
+SQL> /
+Enter value for emp_no: 103
+Enter value for f_name: Gabbar
+Enter value for l_name: Singh
+Enter value for salary: 70000
+Enter value for dept_no: 2
+old   1: INSERT INTO emp06('&emp_no','&f_name','&l_name',&salary,&dept_no)
+new   1: INSERT INTO emp06('103','Gabbar','Singh',70000,2)
+INSERT INTO emp06('103','Gabbar','Singh',70000,2)
+                  *
+ERROR at line 1:
+ORA-00928: missing SELECT keyword 
+
+
+SQL> SELECT * from emp06
+  2  ;
+
+no rows selected
+
+SQL> INSERT INTO emp06(&emp_no,'&f_name','&l_name',&salary,&dept_no);
+Enter value for emp_no: 101
+Enter value for f_name: Jai
+Enter value for l_name: 
+Enter value for salary: 90000
+Enter value for dept_no: 1
+old   1: INSERT INTO emp06(&emp_no,'&f_name','&l_name',&salary,&dept_no)
+new   1: INSERT INTO emp06(101,'Jai','',90000,1)
+INSERT INTO emp06(101,'Jai','',90000,1)
+                  *
+ERROR at line 1:
+ORA-00928: missing SELECT keyword 
+
+
+SQL> /
+Enter value for emp_no: 102
+Enter value for f_name: Viru
+Enter value for l_name: 
+Enter value for salary: 80000
+Enter value for dept_no: 1
+old   1: INSERT INTO emp06(&emp_no,'&f_name','&l_name',&salary,&dept_no)
+new   1: INSERT INTO emp06(102,'Viru','',80000,1)
+INSERT INTO emp06(102,'Viru','',80000,1)
+                  *
+ERROR at line 1:
+ORA-00928: missing SELECT keyword 
+
+
+SQL> /
+Enter value for emp_no: 103
+Enter value for f_name: Gabbar
+Enter value for l_name: Singh
+Enter value for salary: 70000
+Enter value for dept_no: 2
+old   1: INSERT INTO emp06(&emp_no,'&f_name','&l_name',&salary,&dept_no)
+new   1: INSERT INTO emp06(103,'Gabbar','Singh',70000,2)
+INSERT INTO emp06(103,'Gabbar','Singh',70000,2)
+                  *
+ERROR at line 1:
+ORA-00928: missing SELECT keyword 
+
+
+SQL> INSERT INTO emp06 VALUES(&emp_no,'&f_name','&l_name',&salary,&dept_no);
+Enter value for emp_no: 101
+Enter value for f_name: Jai
+Enter value for l_name: 
+Enter value for salary: 90000
+Enter value for dept_no: 1
+old   1: INSERT INTO emp06 VALUES(&emp_no,'&f_name','&l_name',&salary,&dept_no)
+new   1: INSERT INTO emp06 VALUES(101,'Jai','',90000,1)
+
+1 row created.
+
+SQL> /
+Enter value for emp_no: 102
+Enter value for f_name: Viru
+Enter value for l_name: 
+Enter value for salary: 80000
+Enter value for dept_no: 1
+old   1: INSERT INTO emp06 VALUES(&emp_no,'&f_name','&l_name',&salary,&dept_no)
+new   1: INSERT INTO emp06 VALUES(102,'Viru','',80000,1)
+
+1 row created.
+
+SQL> /
+Enter value for emp_no: Gabbar
+Enter value for f_name: Singh
+Enter value for l_name: 70000
+Enter value for salary: 2
+Enter value for dept_no: 
+old   1: INSERT INTO emp06 VALUES(&emp_no,'&f_name','&l_name',&salary,&dept_no)
+new   1: INSERT INTO emp06 VALUES(Gabbar,'Singh','70000',2,)
+INSERT INTO emp06 VALUES(Gabbar,'Singh','70000',2,)
+                                                  *
+ERROR at line 1:
+ORA-00936: missing expression 
+
+
+SQL> /
+Enter value for emp_no: 103
+Enter value for f_name: Gabbar
+Enter value for l_name: Singh
+Enter value for salary: 70000
+Enter value for dept_no: 2
+old   1: INSERT INTO emp06 VALUES(&emp_no,'&f_name','&l_name',&salary,&dept_no)
+new   1: INSERT INTO emp06 VALUES(103,'Gabbar','Singh',70000,2)
+
+1 row created.
+
+SQL> /
+Enter value for emp_no: 104
+Enter value for f_name: Basanti
+Enter value for l_name: 
+Enter value for salary: 60000
+Enter value for dept_no: 3
+old   1: INSERT INTO emp06 VALUES(&emp_no,'&f_name','&l_name',&salary,&dept_no)
+new   1: INSERT INTO emp06 VALUES(104,'Basanti','',60000,3)
+
+1 row created.
+
+SQL> /
+Enter value for emp_no: 105
+Enter value for f_name: Ram
+Enter value for l_name: Lal
+Enter value for salary: 50000
+Enter value for dept_no: 3
+old   1: INSERT INTO emp06 VALUES(&emp_no,'&f_name','&l_name',&salary,&dept_no)
+new   1: INSERT INTO emp06 VALUES(105,'Ram','Lal',50000,3)
+
+1 row created.
+
+SQL> /
+Enter value for emp_no: 106
+Enter value for f_name: Radha
+Enter value for l_name: Thakur
+Enter value for salary: 30000
+Enter value for dept_no: 3
+old   1: INSERT INTO emp06 VALUES(&emp_no,'&f_name','&l_name',&salary,&dept_no)
+new   1: INSERT INTO emp06 VALUES(106,'Radha','Thakur',30000,3)
+
+1 row created.
+
+SQL> SELECT * FROM emp06;
+
+    EMP_NO F_NAME               L_NAME                   SALARY    DEPT_NO      
+---------- -------------------- -------------------- ---------- ----------      
+       101 Jai                                            90000          1      
+       102 Viru                                           80000          1      
+       103 Gabbar               Singh                     70000          2      
+       104 Basanti                                        60000          3      
+       105 Ram                  Lal                       50000          3      
+       106 Radha                Thakur                    30000          3      
+
+6 rows selected.
+
+SQL> CREATE TABLE project (p_no INT PRIMARY KEY,p_name VARCHAR(20), p_loc VARCHAR(50) DEFAULT 'Mumbai');
+
+Table created.
+
+SQL> INSERT INTO project VALUES(&p_no,'&p_name', '&p_loc');
+Enter value for p_no: 1
+Enter value for p_name: XYZ
+Enter value for p_loc: Pune
+old   1: INSERT INTO project VALUES(&p_no,'&p_name', '&p_loc')
+new   1: INSERT INTO project VALUES(1,'XYZ', 'Pune')
+
+1 row created.
+
+SQL> /
+Enter value for p_no: 2
+Enter value for p_name: ABC
+Enter value for p_loc: Pune
+old   1: INSERT INTO project VALUES(&p_no,'&p_name', '&p_loc')
+new   1: INSERT INTO project VALUES(2,'ABC', 'Pune')
+
+1 row created.
+
+SQL> /
+Enter value for p_no: 3
+Enter value for p_name: IJK
+Enter value for p_loc: 
+old   1: INSERT INTO project VALUES(&p_no,'&p_name', '&p_loc')
+new   1: INSERT INTO project VALUES(3,'IJK', '')
+
+1 row created.
+
+SQL> CREATE TABLE emp_proj(emp_no INT PRIMARY KEY,p_no INT);
+
+Table created.
+
+SQL> INSERT INTO emp_proj VALUES(&emp_no, &p_no);
+Enter value for emp_no: 101
+Enter value for p_no: 1
+old   1: INSERT INTO emp_proj VALUES(&emp_no, &p_no)
+new   1: INSERT INTO emp_proj VALUES(101, 1)
+
+1 row created.
+
+SQL> /
+Enter value for emp_no: 102
+Enter value for p_no: 1
+old   1: INSERT INTO emp_proj VALUES(&emp_no, &p_no)
+new   1: INSERT INTO emp_proj VALUES(102, 1)
+
+1 row created.
+
+SQL> /
+Enter value for emp_no: 103
+Enter value for p_no: 2
+old   1: INSERT INTO emp_proj VALUES(&emp_no, &p_no)
+new   1: INSERT INTO emp_proj VALUES(103, 2)
+
+1 row created.
+
+SQL> /
+Enter value for emp_no: 104
+Enter value for p_no: 2
+old   1: INSERT INTO emp_proj VALUES(&emp_no, &p_no)
+new   1: INSERT INTO emp_proj VALUES(104, 2)
+
+1 row created.
+
+SQL> /
+Enter value for emp_no: 101
+Enter value for p_no: 2
+old   1: INSERT INTO emp_proj VALUES(&emp_no, &p_no)
+new   1: INSERT INTO emp_proj VALUES(101, 2)
+INSERT INTO emp_proj VALUES(101, 2)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (C21053264.SYS_C007374) violated 
+
+
+SQL> /
+Enter value for emp_no: 105
+Enter value for p_no: 2
+old   1: INSERT INTO emp_proj VALUES(&emp_no, &p_no)
+new   1: INSERT INTO emp_proj VALUES(105, 2)
+
+1 row created.
+
+SQL> SELECT e.f_name, pr.p_name FROM emp06 e JOIN emp_proj ep ON e.emp_no = ep.emp_no JOIN project pr ON ep.p_no = pr.p_no;
+
+F_NAME               P_NAME                                                     
+-------------------- --------------------                                       
+Jai                  XYZ                                                        
+Viru                 XYZ                                                        
+Gabbar               ABC                                                        
+Basanti              ABC                                                        
+Ram                  ABC                                                        
+
+SQL> SELECT * from emp06
+  2  ;
+
+    EMP_NO F_NAME               L_NAME                   SALARY    DEPT_NO      
+---------- -------------------- -------------------- ---------- ----------      
+       101 Jai                                            90000          1      
+       102 Viru                                           80000          1      
+       103 Gabbar               Singh                     70000          2      
+       104 Basanti                                        60000          3      
+       105 Ram                  Lal                       50000          3      
+       106 Radha                Thakur                    30000          3      
+
+6 rows selected.
+
+SQL> SELECT e.f_name, pr.p_name FROM emp06 e JOIN project pr ON e.dept_no = pr.p_no;
+
+F_NAME               P_NAME                                                     
+-------------------- --------------------                                       
+Jai                  XYZ                                                        
+Viru                 XYZ                                                        
+Gabbar               ABC                                                        
+Basanti              IJK                                                        
+Ram                  IJK                                                        
+Radha                IJK                                                        
+
+6 rows selected.
+
+SQL> DROP TABLE emp_proj;
+
+Table dropped.
+
+SQL> CREATE TABLE emp_proj(emp_no INT PRIMARY KEY,p_no INT PRIMARY KEY);
+CREATE TABLE emp_proj(emp_no INT PRIMARY KEY,p_no INT PRIMARY KEY)
+                                                      *
+ERROR at line 1:
+ORA-02260: table can have only one primary key 
+
+
+SQL> CREATE TABLE emp_proj(emp_no INT,p_no INT, PRIMARY KEY(emp_no,p_no);
+CREATE TABLE emp_proj(emp_no INT,p_no INT, PRIMARY KEY(emp_no,p_no)
+                                                                  *
+ERROR at line 1:
+ORA-00907: missing right parenthesis 
+
+
+SQL> CREATE TABLE emp_proj(emp_no INT,p_no INT, PRIMARY KEY(emp_no,p_no));
+
+Table created.
+
+SQL> INSERT INTO emp_proj VALUES(&emp_no,&p_no);
+Enter value for emp_no: 101
+Enter value for p_no: 1
+old   1: INSERT INTO emp_proj VALUES(&emp_no,&p_no)
+new   1: INSERT INTO emp_proj VALUES(101,1)
+
+1 row created.
+
+SQL> /
+Enter value for emp_no: 102
+Enter value for p_no: 1
+old   1: INSERT INTO emp_proj VALUES(&emp_no,&p_no)
+new   1: INSERT INTO emp_proj VALUES(102,1)
+
+1 row created.
+
+SQL> /
+Enter value for emp_no: 103
+Enter value for p_no: 2
+old   1: INSERT INTO emp_proj VALUES(&emp_no,&p_no)
+new   1: INSERT INTO emp_proj VALUES(103,2)
+
+1 row created.
+
+SQL> /
+Enter value for emp_no: 104
+Enter value for p_no: 2
+old   1: INSERT INTO emp_proj VALUES(&emp_no,&p_no)
+new   1: INSERT INTO emp_proj VALUES(104,2)
+
+1 row created.
+
+SQL> /
+Enter value for emp_no: 101
+Enter value for p_no: 2
+old   1: INSERT INTO emp_proj VALUES(&emp_no,&p_no)
+new   1: INSERT INTO emp_proj VALUES(101,2)
+
+1 row created.
+
+SQL> /
+Enter value for emp_no: 105
+Enter value for p_no: 2
+old   1: INSERT INTO emp_proj VALUES(&emp_no,&p_no)
+new   1: INSERT INTO emp_proj VALUES(105,2)
+
+1 row created.
+
+SQL> SELECT e.f_name,pr.p_name FROM emp06 e JOIN project pr ON e.dept_no = pr.p_no;
+
+F_NAME               P_NAME                                                     
+-------------------- --------------------                                       
+Jai                  XYZ                                                        
+Viru                 XYZ                                                        
+Gabbar               ABC                                                        
+Basanti              IJK                                                        
+Ram                  IJK                                                        
+Radha                IJK                                                        
+
+6 rows selected.
+
+SQL> SELECT e.f_name, p.p_loc FROM emp06 e JOIN project p ON e.f_name = 'Gabbar' AND e.dept_no=p.p_no;
+
+F_NAME               P_LOC                                                      
+-------------------- --------------------------------------------------         
+Gabbar               Pune                                                       
+
+SQL> SELECT * FROM project;
+
+      P_NO P_NAME                                                               
+---------- --------------------                                                 
+P_LOC                                                                           
+--------------------------------------------------                              
+         1 XYZ                                                                  
+Pune                                                                            
+                                                                                
+         2 ABC                                                                  
+Pune                                                                            
+                                                                                
+         3 IJK                                                                  
+                                                                                
+                                                                                
+
+SQL> set linesize 900
+SQL> ;
+  1* SELECT * FROM project
+SQL> set linesize 900;
+SQL> SELECT * FROM project;
+
+      P_NO P_NAME               P_LOC                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
+---------- -------------------- --------------------------------------------------                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
+         1 XYZ                  Pune                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
+         2 ABC                  Pune                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
+         3 IJK                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
+
+SQL> UPDATE project SET p_loc = 'Mumbai' WHERE p_name = 'IJK';
+
+1 row updated.
+
+SQL> SELECT * FROM project;
+
+      P_NO P_NAME               P_LOC                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
+---------- -------------------- --------------------------------------------------                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
+         1 XYZ                  Pune                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
+         2 ABC                  Pune                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
+         3 IJK                  Mumbai                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
+
+SQL> SELECT DISTINCE e.f_name FROM emp06 e MINUS SELECT DISTINCE e.f_name FROM emp06 e, emp_proj p WHERE e.emp_no = p.emp_no;
+SELECT DISTINCE e.f_name FROM emp06 e MINUS SELECT DISTINCE e.f_name FROM emp06 e, emp_proj p WHERE e.emp_no = p.emp_no
+                 *
+ERROR at line 1:
+ORA-00923: FROM keyword not found where expected 
+
+
+SQL> SELECT * FROM emp_proj;
+
+    EMP_NO       P_NO                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
+---------- ----------                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
+       101          1                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
+       102          1                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
+       103          2                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
+       104          2                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
+       101          2                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
+       105          2                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
+
+6 rows selected.
+
+SQL> SELECT DISTINCE e.f_name FROM emp06 e MINUS SELECT DISTINCE e.f_name FROM emp06 e, emp_proj p WHERE e.emp_no = p.emp_no;
+SELECT DISTINCE e.f_name FROM emp06 e MINUS SELECT DISTINCE e.f_name FROM emp06 e, emp_proj p WHERE e.emp_no = p.emp_no
+                 *
+ERROR at line 1:
+ORA-00923: FROM keyword not found where expected 
+
+
+SQL> SELECT DISTINCT e.f_name FROM emp06 e MINUS SELECT DISTINCT e.f_name FROM emp06 e, emp_proj p WHERE e.emp_no = p.emp_no;
+
+F_NAME                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
+--------------------                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
+Radha                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
+
+SQL> SELECT e.name FROM emp06 e LEFT OUTER JOIN emp_proj p ON e.emp_no = p.emp_no WHERE p.emp_no_id IS NULL;
+SELECT e.name FROM emp06 e LEFT OUTER JOIN emp_proj p ON e.emp_no = p.emp_no WHERE p.emp_no_id IS NULL
+                                                                                   *
+ERROR at line 1:
+ORA-00904: "P"."EMP_NO_ID": invalid identifier 
+
+
+SQL> SELECT e.name FROM emp06 e LEFT OUTER JOIN emp_proj p ON e.emp_no = p.emp_no WHERE p.emp_no IS NULL;
+SELECT e.name FROM emp06 e LEFT OUTER JOIN emp_proj p ON e.emp_no = p.emp_no WHERE p.emp_no IS NULL
+       *
+ERROR at line 1:
+ORA-00904: "E"."NAME": invalid identifier 
+
+
+SQL> SELECT e.f_name FROM emp06 e LEFT OUTER JOIN emp_proj p ON e.emp_no = p.emp_no WHERE p.emp_no IS NULL;
+
+F_NAME                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
+--------------------                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
+Radha                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
+
+SQL> SELECT p.p_name FROM project p LEFT OUTER JOIN emp_proj pr ON pr.p_no=p.p_no WHERE pr.p_no IS NULL;
+
+P_NAME                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
+--------------------                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
+IJK                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
+
+SQL> SELECT f_name FROM emp06 WHERE dept_no=1 UNION SELECT f_name FROM emp06 WHERE p.p_name = 'ABC' FROM project p;
+SELECT f_name FROM emp06 WHERE dept_no=1 UNION SELECT f_name FROM emp06 WHERE p.p_name = 'ABC' FROM project p
+                                                                                               *
+ERROR at line 1:
+ORA-00933: SQL command not properly ended 
+
+
+SQL> SELECT f_name FROM emp06 WHERE dept_no=1 UNION SELECT f_name FROM emp06 WHERE project.p_name = 'ABC';
+SELECT f_name FROM emp06 WHERE dept_no=1 UNION SELECT f_name FROM emp06 WHERE project.p_name = 'ABC'
+                                                                              *
+ERROR at line 1:
+ORA-00904: "PROJECT"."P_NAME": invalid identifier 
+
+
+SQL> SELECT f_name FROM emp06 WHERE dept_no=1 UNION SELECT f_name FROM emp06, project p WHERE p.p_name = 'ABC';
+
+F_NAME                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
+--------------------                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
+Basanti                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
+Gabbar                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
+Jai                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
+Radha                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
+Ram                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
+Viru                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
+
+6 rows selected.
+
+SQL> SELECT f_name FROM emp06 WHERE dept_no=1 INTERSECT SELECT f_name FROM emp06, project p WHERE p.p_no=2;
+
+F_NAME                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
+--------------------                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
+Jai                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
+Viru                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
+
+SQL> SELECT f_name FROM emp06, project p WHERE p.p_no=1 INTERSECT SELECT f_name FROM emp06, project p WHERE p.p_no=2;
+
+F_NAME                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
+--------------------                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
+Basanti                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
+Gabbar                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
+Jai                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
+Radha                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
+Ram                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
+Viru                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
+
+6 rows selected.
+
+SQL> SELECT p_no, COUNT(*) FROM emp_proj GROUP BY number;
+SELECT p_no, COUNT(*) FROM emp_proj GROUP BY number
+                                             *
+ERROR at line 1:
+ORA-00936: missing expression 
+
+
+SQL> SELECT p_no, COUNT(*) FROM emp_proj GROUP BY p_no;
+
+      P_NO   COUNT(*)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
+---------- ----------                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
+         1          2                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
+         2          4                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
+
+SQL> spool off;
