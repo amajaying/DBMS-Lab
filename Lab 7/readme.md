@@ -1,107 +1,45 @@
-ASSIGNMENT BASED ON DUAL TABLE
+1. FIND THE NAMES OF SAILORS WHO HAVE RESERVED BOAT NUMBER 103.
 
-1.	Calculate 10*10.
-    ```
-    SELECT 10 * 10 FROM dual;
-    ```
-2.	Display system date.
-    ```
-    SELECT SYSDATE FROM dual;
-    ```
-3.	Calculate the absolute value  of -20.
-    ```
-    SELECT ABS(-20) FROM DUAL;
-    ```
-4.	Calculate 10^10.
-    ```
-    SELECT POWER(10,10) FROM DUAL;
-    ```
-5.	Calculate square root of 25.
-    ```
-    SELECT SQRT(25) FROM DUAL;
-    ```
-6.	Round the value 23.565 to one places of decimal.
-    ```
-    SELECT ROUND(23.565,1) FROM DUAL; 
-    ```
-7.	Display ‘TRIDENT’ in lowercase
-    ```
-    SELECT LOWER('TRIDENT') FROM DUAL;
-    ```
-8.	Display ‘trident’ in uppercase.
-    ```
-    SELECT UPPER('trident') FROM DUAL;
-    ```
-9.	Display the first letter of your name in uppercase.
-    ```
-    SELECT INITCAP(SUBSTR('ajay',1,1)) FROM DUAL;
-    ```
-10.	Calculate the length of your name.
-    ```
-    SELECT LENGTH('ajay') FROM DUAL;
-    ```
-11.	Write a query that would return a string like “ORA” , if the string inputted is ‘ORACLE’.
-    ```
-    SELECT SUBSTR('ORACLE',1,3) FROM DUAL;
-    ```
-12.	Find the character position of ‘C’ in the string ‘ORACLE’.
-    ```
-    SELECT INSTR('ORACLE','C') FROM DUAL;
-    ```
-13.	Delete the extra spaces from the strings ‘     ORACLE’ and ‘ORACLE   ‘     
-    ```
-    SELECT TRIM('     ORACLE') AS first, TRIM('ORACLE   ') AS second FROM DUAL;
-    ```
-14.	Write a query that would display **ORACLE, if the string inputted is ORACLE.
-    ```
-    SELECT CONCAT('**', 'ORACLE') as concatenated_string FROM dual;
-    ```
-15.	Same as question  14 but the output is   ORACLE**.
-    ```
-    SELECT CONCAT('ORACLE','**') as concatenated_string FROM dual;
-    ```
-16.	Retrieve the last month specified in system date.
-    ```
-    SELECT TO_CHAR(ADD_MONTHS(SYSDATE, -1), 'Month') as last_month FROM dual;
-    ```
-17.	Retrieve number of months between 01-01-07 to 01-05-07.
-    ```
-    SELECT MONTHS_BETWEEN(TO_DATE('01-05-07', 'DD-MM-YY'), TO_DATE('01-01-07', 'DD-MM-YY')) as months FROM dual;
-    ```
-18.	Round 56.23 using negative numbers(e.g.-1,-2, and-3)
-    ```
-    SELECT ROUND(56.23,-1) as rounded_value FROM dual;
-    ```
-    ```
-    SELECT ROUND(56.23,-2) as rounded_value FROM dual;
-    ```
-    ```
-    SELECT ROUND(56.23,-3) as rounded_value FROM dual;
-    ```
-19.	Find out the remainder of the division 1600/300.
-    ```
-    SELECT MOD(1600, 300) AS remainder FROM dual;
-    ```
-20.	Find the maximum and minimum number from a list of numbers.
-    ```
-    CREATE TABLE numbers (value NUMBER);
-    ```
-    ```
-    INSERT INTO numbers VALUES (100);
-    ```
-    ```
-    INSERT INTO numbers VALUES (50);
-    ```
-    ```
-    INSERT INTO numbers VALUES (99);
-    ```
-    ```
-    INSERT INTO numbers VALUES (16);
-    ```
-    ```
-    SELECT MAX(value) AS max_value FROM numbers;
-    ```
-    ```
-    SELECT MIN(value) AS min_value FROM numbers;
-    ```
+```
+SELECT sname FROM sailors WHERE sid IN(SELECT sid FROM reserves WHERE bid=103);
+```
 
+2. FIND THE SIDS OF SAILORS WHO HAVE RESERVED A RED BOAT
+
+```
+SELECT sid FROM reserves WHERE bid IN(SELECT bid FROM boats WHERE color='red');
+```
+
+3. FIND THE COLORS OF BOATS RESERVED BY LUBBER.
+```
+SELECT color FROM boats WHERE bid IN(SELECT bid FROM reserves WHERE sid IN(SELECT sid FROM sailors WHERE sname='lubber'));
+```
+
+4. FIND THE NAMES OF SAILORS WHO HAVE RESERVED AT LEAST ONE BOAT.
+```
+SELECT sname FROM sailors WHERE sid IN(SELECT sid FROM reserves);
+```
+
+5. COMPUTE INCREMENTS FOR THE RATINGS OF PERSONS WHO HAVE SAILEDTWO DIFFERENT BOATS ON THE SAME DAY
+
+
+
+6. FIND THE AGES OF SAILORS WHOSE NAME BEGINS AND ENDS WITH B AND HAS ATLEAST THREE CHARACTERS. 
+```
+SELECT age FROM sailors WHERE sname LIKE 'B_b%';
+```
+
+7. FIND AVERAGE AGE OF SAILORS WITH A RATING OF 7.
+```
+SELECT AVG(age) FROM sailors WHERE rating=7;
+```
+
+8. FIND THE NAME AND AGE OF THE OLDEST SAILOR
+```
+SELECT sname,age FROM sailors WHERE age=(SELECT MAX(age) FROM sailors);
+```
+
+9. FIND THE NAMES OF SAILORS WHO ARE OLDER THAN THE OLDEST SAILORWITH A RATING 10.
+```
+SELECT sname FROM sailors WHERE age>(SELECT MAX(age) FROM sailors WHERE rating=10);
+```
