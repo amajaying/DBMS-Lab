@@ -43,3 +43,9 @@ SELECT sname,age FROM sailors WHERE age=(SELECT MAX(age) FROM sailors);
 ```
 SELECT sname FROM sailors WHERE age>(SELECT MAX(age) FROM sailors WHERE rating=10);
 ```
+
+11. FOR EACH RED BOAT, FIND THE NUMBER OF RESERVATIONS FOR THIS BOAT
+```
+SELECT bid,COUNT(sid) FROM reserves WHERE bid IN(SELECT bid FROM boats WHERE color='red') GROUP BY bid;
+```
+
